@@ -1,0 +1,50 @@
+﻿@* Generator: Template TypeVisibility: Internal GeneratePrettyNames: True *@
+@using System
+@using PugTrace.Dashboard
+@using PugTrace.Dashboard.Pages
+@inherits RazorPage
+@{
+    Layout = new LayoutPage();
+}
+@using (var connection = Storage.GetConnection())
+{
+    var traces = connection.Get();
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <th>Application</th>
+                    <th>Source</th>
+                    <th>Id</th>
+                    <th>Event Type</th>
+                    <th>Timestamp</th>
+                    <th>Machine</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var trace in traces)
+                {
+                    var klass = string.Empty;
+
+                    if (trace.EventType == "Error")
+                    {
+                        klass = "danger";
+                    }
+
+                    <tr class="@klass">
+                        <td>@trace.ApplicationName</td>
+                        <td>@trace.Source</td>
+                        <td>@trace.Id</td>
+                        <td>@trace.EventType</td>
+                        <td>@trace.UtcDateTime.ToString("f")</td>
+                        <td>@trace.MachineName</td>
+                        <td>@trace.Message <a href="@Url.TraceDetails(trace.TraceId.ToString())">Details...</a></td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+}
