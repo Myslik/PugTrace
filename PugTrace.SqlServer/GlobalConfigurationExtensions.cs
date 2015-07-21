@@ -6,7 +6,7 @@ namespace PugTrace.SqlServer
     [EditorBrowsable(EditorBrowsableState.Never)]
     public static class GlobalConfigurationExtensions
     {
-        public static IGlobalConfiguration<SqlServerTraceStorage> UseSqlDatabase(
+        public static IGlobalConfiguration<SqlServerTraceStorage> UseSqlServerStorage(
             this IGlobalConfiguration configuration,
             string nameOrConnectionString)
         {

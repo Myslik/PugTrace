@@ -5,7 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 
-namespace PugTrace
+namespace PugTrace.SqlServer
 {
     public static class SqlServerObjectsInstaller
     {

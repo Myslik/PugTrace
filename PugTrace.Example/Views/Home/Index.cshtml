@@ -1,0 +1,8 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@Html.ActionLink("Log", "Log", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Log Exception", "LogException", null, new { @class = "btn btn-primary" })
