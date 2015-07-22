@@ -1,6 +1,7 @@
 # PugTrace
 
 [![Build status](https://ci.appveyor.com/api/projects/status/ehis2hf6kbd1p9m9/branch/master?svg=true)](https://ci.appveyor.com/project/Myslik/pugtrace/branch/master)
+![Latest version](https://img.shields.io/nuget/v/PugTrace.svg)
 [![LicenseMIT](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT)
 
 Application for easy tracing on .NET platform. Inspired by [elmah](https://code.google.com/p/elmah/) and [Hangfire](http://hangfire.io/).
