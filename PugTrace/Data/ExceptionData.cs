@@ -5,7 +5,7 @@ using System.Web;
 
 namespace PugTrace.Data
 {
-    public class ExceptionData
+    public class ExceptionData : ITraceData
     {
         public string HostName { get; private set; }
         public string TypeName { get; private set; }

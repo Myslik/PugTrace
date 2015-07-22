@@ -5,7 +5,9 @@ namespace PugTrace.Storage
 {
     public interface IStorageConnection : IDisposable
     {
-        IEnumerable<TraceData> Get(int take = 20);
+        int Count();
+
+        IEnumerable<TraceData> Get(int skip = 0, int top = 20);
 
         TraceData Get(string id);
     }

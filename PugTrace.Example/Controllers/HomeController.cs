@@ -34,12 +34,9 @@ namespace PugTrace.Example.Controllers
                 int divider = 0;
                 int result = 5 / divider;
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                var data = new List<object>();
-                data.Add(new RequestData(HttpContext));
-                data.Add(new ExceptionData(ex));
-                Source.TraceData(TraceEventType.Error, 5000, data.ToArray());
+                Source.TraceWebException(5000, HttpContext, exception);
                 Source.Flush();
             }
             return RedirectToAction("Index");

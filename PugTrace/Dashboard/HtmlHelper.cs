@@ -20,6 +20,18 @@ namespace PugTrace.Dashboard
             return RenderPartial(new DataObjectPage(data));
         }
 
+        public NonEscapedString Paginator(Pager pager)
+        {
+            if (pager == null) throw new ArgumentNullException("pager");
+            return RenderPartial(new Paginator(pager));
+        }
+
+        public NonEscapedString PerPageSelector(Pager pager)
+        {
+            if (pager == null) throw new ArgumentNullException("pager");
+            return RenderPartial(new PerPageSelector(pager));
+        }
+
         public NonEscapedString RenderPartial(RazorPage partialPage)
         {
             partialPage.Assign(_page);

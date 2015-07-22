@@ -5,7 +5,7 @@ using System.Web;
 
 namespace PugTrace.Data
 {
-    public class RequestData
+    public class RequestData : ITraceData
     {
         public string Url { get; private set; }
         public Dictionary<string, string> QueryString { get; private set; }
