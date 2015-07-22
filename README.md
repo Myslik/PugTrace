@@ -25,3 +25,35 @@ public void Configuration(IAppBuilder app)
     app.UsePugTraceDashboard();
 }
 ```
+
+Then you need to configure `System.Diagnostics` to use PugTrace listener.
+
+```xml
+<system.diagnostics>
+  <sharedListeners>
+    <add name="sqldatabase" 
+         type="PugTrace.SqlServer.SqlServerTraceListener, PugTrace.SqlServer"
+         initializeData="<connection string or its name>"
+         applicationName="<application name>" />
+  </sharedListeners>
+  <sources>
+    <source name="Application" switchValue="All">
+      <listeners>
+        <clear />
+        <add name="sqldatabase" />
+      </listeners>
+    </source>
+  </sources>
+</system.diagnostics>
+```
+
+Example
+-------
+
+You can then log your traces like this.
+
+```csharp
+TraceSource source = new TraceSource("Application");
+source.TraceInformation("Hello world!");
+source.Flush();
+```
