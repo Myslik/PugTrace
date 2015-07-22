@@ -4,6 +4,8 @@
 
 Application for easy tracing on .NET platform. Inspired by [elmah](https://code.google.com/p/elmah/) and [Hangfire](http://hangfire.io/).
 
+![PugTrace Dashboard](http://s29.postimg.org/mn5oj37bb/Dashboard.png)
+
 Installation
 -------------
 
