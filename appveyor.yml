@@ -1,0 +1,11 @@
+version: 0.2.{build}
+
+branches:
+  only:
+    - master
+
+cache:
+  - packages
+
+before_build:
+  - nuget restore
