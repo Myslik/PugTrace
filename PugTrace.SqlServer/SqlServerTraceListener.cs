@@ -14,7 +14,8 @@ namespace PugTrace.SqlServer
         //public const string DefaultTable = "diagnostics_Trace";
         string _connectionName;
         const string _defaultApplicationName = "";
-        const string _defaultCommandText = "EXEC diagnostics_Trace_AddEntry " +
+        const string _defaultCommandText = "IF object_id('diagnostics_Trace_AddEntry') IS NOT NULL " +
+           "EXEC diagnostics_Trace_AddEntry " +
            "@ApplicationName, @Source, @Id, @EventType, @UtcDateTime, " +
            "@MachineName, @AppDomainFriendlyName, @ProcessId, @ThreadName, " +
            "@Message, @ActivityId, @RelatedActivityId, @LogicalOperationStack, " +

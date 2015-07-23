@@ -92,6 +92,7 @@
     <Compile Include="DashboardOptions.cs" />
     <Compile Include="Dashboard\CombinedResourceDispatcher.cs" />
     <Compile Include="Dashboard\DashboardRoutes.cs" />
+    <Compile Include="Dashboard\DateTimeExtensions.cs" />
     <Compile Include="Dashboard\EmbeddedResourceDispatcher.cs" />
     <Compile Include="Dashboard\HtmlHelper.cs" />
     <Compile Include="Dashboard\IRequestDispatcher.cs" />

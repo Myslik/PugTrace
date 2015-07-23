@@ -38,9 +38,9 @@
                     <td>@trace.Source</td>
                     <td>@trace.Id</td>
                     <td>@trace.EventType</td>
-                    <td>@trace.UtcDateTime.ToString("f")</td>
+                    <td>@Html.RenderDateTime(trace.UtcDateTime.ToLocalTime())</td>
                     <td>@trace.MachineName</td>
-                    <td>@trace.Message <a href="@Url.TraceDetails(trace.TraceId.ToString())">Details...</a></td>
+                    <td>@Html.Truncate(trace.Message) <a href="@Url.TraceDetails(trace.TraceId.ToString())">Details…</a></td>
                 </tr>
             }
         </tbody>

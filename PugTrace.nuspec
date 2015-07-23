@@ -2,11 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>PugTrace</id>
-        <version>0.2.0</version>
+        <version>0.3</version>
         <title>PugTrace</title>
         <authors>Premysl Krajcovic</authors>
         <owners>myslik</owners>
         <licenseUrl>https://github.com/Myslik/PugTrace/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/Myslik/PugTrace</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Application for easy tracing on .NET platform.</description>
         <copyright>Copyright © 2015 Premysl Krajcovic</copyright>

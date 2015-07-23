@@ -158,7 +158,7 @@ WriteLiteral("</td>\r\n                    <td>");
 
             
             #line 41 "..\..\Dashboard\Pages\HomePage.cshtml"
-                   Write(trace.UtcDateTime.ToString("f"));
+                   Write(Html.RenderDateTime(trace.UtcDateTime.ToLocalTime()));
 
             
             #line default
@@ -178,7 +178,7 @@ WriteLiteral("</td>\r\n                    <td>");
 
             
             #line 43 "..\..\Dashboard\Pages\HomePage.cshtml"
-                   Write(trace.Message);
+                   Write(Html.Truncate(trace.Message));
 
             
             #line default
@@ -188,12 +188,12 @@ WriteLiteral(" <a href=\"");
 
             
             #line 43 "..\..\Dashboard\Pages\HomePage.cshtml"
-                                           Write(Url.TraceDetails(trace.TraceId.ToString()));
+                                                          Write(Url.TraceDetails(trace.TraceId.ToString()));
 
             
             #line default
             #line hidden
-WriteLiteral("\">Details...</a></td>\r\n                </tr>\r\n");
+WriteLiteral("\">Details…</a></td>\r\n                </tr>\r\n");
 
 
             
