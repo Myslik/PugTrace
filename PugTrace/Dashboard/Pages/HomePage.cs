@@ -34,7 +34,7 @@ namespace PugTrace.Dashboard.Pages
                 this.RowCount = connection.Count();
                 int skip = (Page - 1) * RowsPerPage;
                 int top = RowsPerPage;
-                if (skip >= this.RowCount || Page < 1)
+                if (skip >= Math.Max(1, this.RowCount) || Page < 1)
                 {
                     throw new ArgumentOutOfRangeException("page");
                 }

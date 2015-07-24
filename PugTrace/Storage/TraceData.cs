@@ -5,7 +5,7 @@ namespace PugTrace.Storage
     public class TraceData
     {
         public string ApplicationName { get; set; }
-        public Guid TraceId { get; set; }
+        public int TraceId { get; set; }
         public string Source { get; set; }
         public int Id { get; set; }
         public string EventType { get; set; }

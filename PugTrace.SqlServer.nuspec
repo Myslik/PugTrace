@@ -1,34 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
-    <metadata>
-        <id>PugTrace.SqlServer</id>
-        <version>0.3</version>
-        <authors>Premysl Krajcovic</authors>
-        <owners>myslik</owners>
-        <licenseUrl>https://github.com/Myslik/PugTrace/blob/master/LICENSE</licenseUrl>
-        <projectUrl>https://github.com/Myslik/PugTrace</projectUrl>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>SQL store and trace listener for PugTrace.</description>
-        <summary />
-        <copyright>Copyright © 2015 Premysl Krajcovic</copyright>
-        <language>en-US</language>
-        <tags>Trace Diagnostics Logging SQL</tags>
-        <dependencies>
-            <group targetFramework=".NETFramework4.5">
-                <dependency id="Dapper" version="1.42" />
-                <dependency id="Newtonsoft.Json" version="7.0.1" />
-                <dependency id="PugTrace" version="0.3" />
-            </group>
-        </dependencies>
-        <frameworkAssemblies>
-            <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.5" />
-            <frameworkAssembly assemblyName="System.Configuration" targetFramework=".NETFramework4.5" />
-            <frameworkAssembly assemblyName="System.Data" targetFramework=".NETFramework4.5" />
-            <frameworkAssembly assemblyName="System.Core" targetFramework=".NETFramework4.5" />
-        </frameworkAssemblies>
-    </metadata>
-    <files>
-        <file src="PugTrace.SqlServer\bin\Debug\PugTrace.SqlServer.dll" target="lib\net45\PugTrace.SqlServer.dll" />
-        <file src="PugTrace.SqlServer\bin\Debug\PugTrace.SqlServer.pdb" target="lib\net45\PugTrace.SqlServer.pdb" />
-    </files>
+  <metadata>
+    <id>PugTrace.SqlServer</id>
+    <version>0.3</version>
+    <authors>Premysl Krajcovic</authors>
+    <owners>myslik</owners>
+    <licenseUrl>https://github.com/Myslik/PugTrace/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Myslik/PugTrace</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SQL store and trace listener for PugTrace.</description>
+    <summary />
+    <copyright>Copyright © 2015 Premysl Krajcovic</copyright>
+    <language>en-US</language>
+    <tags>Trace Diagnostics Logging SQL</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Dapper" version="1.42" />
+        <dependency id="Newtonsoft.Json" version="7.0.1" />
+        <dependency id="PugTrace" version="0.3" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Configuration" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Data" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework=".NETFramework4.5" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="PugTrace.SqlServer\bin\Debug\PugTrace.SqlServer.dll" target="lib\net45\PugTrace.SqlServer.dll" />
+    <file src="PugTrace.SqlServer\bin\Debug\PugTrace.SqlServer.pdb" target="lib\net45\PugTrace.SqlServer.pdb" />
+  </files>
 </package>

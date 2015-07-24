@@ -2,11 +2,11 @@
 {
     partial class TraceDetailsPage
     {
-        public TraceDetailsPage(string traceId)
+        public TraceDetailsPage(int traceId)
         {
             TraceId = traceId;
         }
 
-        public string TraceId { get; private set; }
+        public int TraceId { get; private set; }
     }
 }

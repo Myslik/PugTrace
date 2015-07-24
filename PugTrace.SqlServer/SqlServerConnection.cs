@@ -22,16 +22,14 @@ namespace PugTrace.SqlServer
 
         public IEnumerable<TraceData> Get(int skip = 0, int top = 20)
         {
-            const string sql = @"select * from (select ROW_NUMBER() over(order by [UtcDateTime] desc) as NUMBER, * from dbo.diagnostics_Trace) as tbl where NUMBER between (@skip + 1) and (@top + @skip) order by [UtcDateTime] desc";
+            const string sql = @"select * from (select ROW_NUMBER() over(order by [UtcDateTime] desc) as NUMBER, * from [PugTrace].[Trace]) as tbl where NUMBER between (@skip + 1) and (@top + @skip) order by [UtcDateTime] desc";
 
             return _connection.Query<TraceData>(sql, new { top = top, skip = skip });
         }
 
-        public TraceData Get(string id)
+        public TraceData GetTraceDetail(int id)
         {
-            if (id == null) throw new ArgumentNullException("id");
-
-            const string sql = @"select * from dbo.diagnostics_Trace where TraceId = @id";
+            const string sql = @"select * from [PugTrace].[Trace] where TraceId = @id";
 
             return _connection.Query<TraceData>(sql, new { id = id }).SingleOrDefault();
         }
@@ -43,7 +41,7 @@ namespace PugTrace.SqlServer
 
         public int Count()
         {
-            return _connection.ExecuteScalar<int>("select count(*) from dbo.diagnostics_Trace");
+            return _connection.ExecuteScalar<int>("select count(*) from [PugTrace].[Trace]");
         }
     }
 }

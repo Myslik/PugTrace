@@ -9,6 +9,6 @@ namespace PugTrace.Storage
 
         IEnumerable<TraceData> Get(int skip = 0, int top = 20);
 
-        TraceData Get(string id);
+        TraceData GetTraceDetail(int id);
     }
 }

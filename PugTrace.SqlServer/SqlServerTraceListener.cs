@@ -1,9 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using Dapper;
+using Newtonsoft.Json;
+using PugTrace.Data;
 using System;
 using System.Configuration;
-using System.Data.Common;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Threading;
 
@@ -11,22 +14,37 @@ namespace PugTrace.SqlServer
 {
     public class SqlServerTraceListener : TraceListenerBase
     {
-        //public const string DefaultTable = "diagnostics_Trace";
         string _connectionName;
         const string _defaultApplicationName = "";
-        const string _defaultCommandText = "IF object_id('diagnostics_Trace_AddEntry') IS NOT NULL " +
-           "EXEC diagnostics_Trace_AddEntry " +
-           "@ApplicationName, @Source, @Id, @EventType, @UtcDateTime, " +
-           "@MachineName, @AppDomainFriendlyName, @ProcessId, @ThreadName, " +
-           "@Message, @ActivityId, @RelatedActivityId, @LogicalOperationStack, " +
-           "@Data;";
         const int _defaultMaxMessageLength = 1500;
 
-        private static string[] _supportedAttributes = new string[] 
-            { 
-                "applicationName", "ApplicationName", "applicationname", 
-                "commandText", "CommandText", "commandtext", 
-                "maxMessageLength", "MaxMessageLength", "maxmessagelength", 
+        private static string[] _parameters = new string[]
+            {
+                "ApplicationName",
+                "Source",
+                "Id",
+                "EventType",
+                "UtcDateTime",
+                "MachineName",
+                "AppDomainFriendlyName",
+                "ProcessId",
+                "ThreadName",
+                "Message",
+                "ActivityId",
+                "RelatedActivityId",
+                "LogicalOperationStack",
+                "Data"
+            };
+
+        private static string _columns = string.Join(", ", _parameters.Select(p => string.Format("[{0}]", p)));
+        private static string _values = string.Join(", ", _parameters.Select(p => string.Format("@{0}", p)));
+        private static string _commandText = string.Format("insert into [PugTrace].[Trace]({0}) VALUES({1})", _columns, _values);
+
+        private static string[] _supportedAttributes = new string[]
+            {
+                "applicationName", "ApplicationName", "applicationname",
+                "commandText", "CommandText", "commandtext",
+                "maxMessageLength", "MaxMessageLength", "maxmessagelength",
             };
 
         public SqlServerTraceListener(string connectionName)
@@ -63,7 +81,7 @@ namespace PugTrace.SqlServer
                 }
                 else
                 {
-                    return _defaultCommandText;
+                    return _commandText;
                 }
             }
             set
@@ -112,6 +130,15 @@ namespace PugTrace.SqlServer
             if (data != null)
             {
                 dataString = JsonConvert.SerializeObject(data);
+
+                foreach (var item in data)
+                {
+                    var exceptionData = item as ExceptionData;
+                    if (exceptionData != null && string.IsNullOrEmpty(message))
+                    {
+                        message = string.Format("[{0}] {1}", exceptionData.TypeName.Split('.').LastOrDefault(), exceptionData.Message);
+                    }
+                }
             }
             WriteToDatabase(eventCache, source, eventType, id, message, relatedActivityId, dataString);
         }
@@ -153,31 +180,27 @@ namespace PugTrace.SqlServer
             }
 
             ConnectionStringSettings connectionSettings = ConfigurationManager.ConnectionStrings[ConnectionName];
-            DbProviderFactory dbFactory = DbProviderFactories.GetFactory(connectionSettings.ProviderName);
-            using (var connection = DbProviderFactoryExtensions.CreateConnection(dbFactory, connectionSettings.ConnectionString))
+            using (var connection = new SqlConnection(connectionSettings.ConnectionString))
             {
-                using (var command = DbProviderFactoryExtensions.CreateCommand(dbFactory, CommandText, connection))
+                connection.Open();
+                connection.Execute(CommandText, new
                 {
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@ApplicationName", ApplicationName != null ? (object)ApplicationName : DBNull.Value));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@Source", source != null ? (object)source : DBNull.Value));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@Id", id ?? 0));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@EventType", eventType.ToString()));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@UtcDateTime", logTime));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@DateTime", logTime));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@MachineName", Environment.MachineName));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@AppDomainFriendlyName", AppDomain.CurrentDomain.FriendlyName));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@ProcessId", eventCache != null ? (object)eventCache.ProcessId : 0));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@ThreadName", thread));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@ThreadId", threadId));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@Message", message != null ? (object)message : DBNull.Value));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@ActivityId", Trace.CorrelationManager.ActivityId != Guid.Empty ? (object)Trace.CorrelationManager.ActivityId : DBNull.Value));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@RelatedActivityId", relatedActivityId.HasValue ? (object)relatedActivityId.Value : DBNull.Value));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@LogicalOperationStack", logicalOperationStack != null ? (object)logicalOperationStack : DBNull.Value));
-                    command.Parameters.Add(DbProviderFactoryExtensions.CreateParameter(dbFactory, "@Data", dataString != null ? (object)dataString : DBNull.Value));
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
+                    ApplicationName = ApplicationName,
+                    Source = source,
+                    Id = id ?? 0,
+                    EventType = eventType.ToString(),
+                    UtcDateTime = logTime,
+                    MachineName = Environment.MachineName,
+                    AppDomainFriendlyName = AppDomain.CurrentDomain.FriendlyName,
+                    ProcessId = eventCache != null ? eventCache.ProcessId : 0,
+                    ThreadName = thread,
+                    ThreadId = threadId,
+                    Message = message,
+                    ActivityId = Trace.CorrelationManager.ActivityId != Guid.Empty ? (Guid?)Trace.CorrelationManager.ActivityId : null,
+                    RelatedActivityId = relatedActivityId,
+                    LogicalOperationStack = logicalOperationStack,
+                    Data = dataString
+                });
             }
         }
     }

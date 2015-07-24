@@ -72,7 +72,7 @@ Write(Html.PerPageSelector(this.Pager));
 WriteLiteral(@"
 </div>
 <div class=""table-responsive"">
-    <table class=""table"">
+    <table class=""table table-hover"">
         <thead>
             <tr>
                 <th>Application</th>
@@ -203,11 +203,31 @@ WriteLiteral("\">Details…</a></td>\r\n                </tr>\r\n");
             
             #line default
             #line hidden
+
+            
+            #line 46 "..\..\Dashboard\Pages\HomePage.cshtml"
+             if(this.Rows.Count() == 0)
+            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                <tr>\r\n                    <td colspan=\"7\">No traces.</td>\r\n      " +
+"          </tr>\r\n");
+
+
+            
+            #line 51 "..\..\Dashboard\Pages\HomePage.cshtml"
+            }
+
+            
+            #line default
+            #line hidden
 WriteLiteral("        </tbody>\r\n    </table>\r\n</div>\r\n");
 
 
             
-            #line 49 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 55 "..\..\Dashboard\Pages\HomePage.cshtml"
 Write(Html.Paginator(this.Pager));
 
             

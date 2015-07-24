@@ -11,7 +11,7 @@
 }
 @using (var connection = Storage.GetConnection())
 {
-    var trace = connection.Get(TraceId.ToString());
+    var trace = connection.GetTraceDetail(TraceId);
     JArray json = null;
 
     if (!string.IsNullOrEmpty(trace.Data))

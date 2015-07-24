@@ -23,7 +23,7 @@ namespace PugTrace.Dashboard
         {
             Routes = new RouteCollection();
             Routes.AddRazorPage("/", x => new HomePage());
-            Routes.AddRazorPage("/traces/(?<TraceId>.+)", x => new TraceDetailsPage(x.Groups["TraceId"].Value));
+            Routes.AddRazorPage("/traces/(?<TraceId>\\d+)", x => new TraceDetailsPage(int.Parse(x.Groups["TraceId"].Value)));
 
             #region Embedded static content
 

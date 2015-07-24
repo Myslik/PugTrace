@@ -11,7 +11,7 @@
     @Html.PerPageSelector(this.Pager)
 </div>
 <div class="table-responsive">
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Application</th>
@@ -41,6 +41,12 @@
                     <td>@Html.RenderDateTime(trace.UtcDateTime.ToLocalTime())</td>
                     <td>@trace.MachineName</td>
                     <td>@Html.Truncate(trace.Message) <a href="@Url.TraceDetails(trace.TraceId.ToString())">Details…</a></td>
+                </tr>
+            }
+            @if(this.Rows.Count() == 0)
+            {
+                <tr>
+                    <td colspan="7">No traces.</td>
                 </tr>
             }
         </tbody>
