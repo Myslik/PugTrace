@@ -6,10 +6,6 @@ namespace PugTrace.Dashboard.Pages
 {
     partial class HomePage
     {
-        public int Page { get; private set; }
-        public int PageCount { get; private set; }
-        public int RowCount { get; private set; }
-        public int RowsPerPage { get; private set; }
         public IEnumerable<TraceData> Rows { get; private set; }
         public Pager Pager { get; private set; }
 
@@ -17,8 +13,11 @@ namespace PugTrace.Dashboard.Pages
         {
             int page;
             int rowsPerPage;
+            int rowCount;
+            string typeFilter;
             int.TryParse(Query("page"), out page);
             int.TryParse(Query("count"), out rowsPerPage);
+            typeFilter = Query("type");
             if (page == 0)
             {
                 page = 1;
@@ -27,20 +26,18 @@ namespace PugTrace.Dashboard.Pages
             {
                 rowsPerPage = 10;
             }
-            this.RowsPerPage = rowsPerPage;
-            this.Page = page;
             using (var connection = this.Storage.GetConnection())
             {
-                this.RowCount = connection.Count();
-                int skip = (Page - 1) * RowsPerPage;
-                int top = RowsPerPage;
-                if (skip >= Math.Max(1, this.RowCount) || Page < 1)
+                rowCount = connection.Count(typeFilter);
+                int skip = (page - 1) * rowsPerPage;
+                int top = rowsPerPage;
+                if (skip >= Math.Max(1, rowCount) || page < 1)
                 {
                     throw new ArgumentOutOfRangeException("page");
                 }
-                this.Rows = connection.Get(skip, top);
+                this.Rows = connection.Get(skip, top, typeFilter);
             }
-            this.Pager = new Pager(this.Page, this.RowsPerPage, this.RowCount);
+            this.Pager = new Pager(page, rowsPerPage, rowCount, typeFilter);
         }
     }
 }

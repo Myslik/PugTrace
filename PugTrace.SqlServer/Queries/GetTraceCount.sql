@@ -1,0 +1,1 @@
+﻿SELECT COUNT(*) FROM [PugTrace].[Trace] WHERE (@type IS NULL OR [EventType] = @type)

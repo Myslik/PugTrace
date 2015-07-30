@@ -12,6 +12,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28E16AB8-F768-4AF1-AFA3-249A6455840B}"
 	ProjectSection(SolutionItems) = preProject
 		appveyor.yml = appveyor.yml
+		build-nuget.bat = build-nuget.bat
+		build-nuget.ps1 = build-nuget.ps1
 	EndProjectSection
 EndProject
 Global

@@ -8,6 +8,7 @@
     Initialize();
 }
 <div class="btn-toolbar btn-toolbar-top">
+    @Html.Filter(this.Pager)
     @Html.PerPageSelector(this.Pager)
 </div>
 <div class="table-responsive">

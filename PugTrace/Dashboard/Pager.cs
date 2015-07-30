@@ -13,13 +13,14 @@ namespace PugTrace.Dashboard
         private int _startPageIndex = 1;
         private int _endPageIndex = 1;
 
-        public Pager(int page, int perPage, long total)
+        public Pager(int page, int perPage, long total, string typeFilter)
         {
             FromRecord = (page - 1) * perPage;
             RecordsPerPage = perPage > 0 ? perPage : DefaultRecordsPerPage;
             TotalRecordCount = total;
             CurrentPage = FromRecord / RecordsPerPage + 1;
             TotalPageCount = (int)Math.Ceiling((double)TotalRecordCount / RecordsPerPage);
+            TypeFilter = typeFilter;
 
             PagerItems = GenerateItems();
         }
@@ -29,6 +30,7 @@ namespace PugTrace.Dashboard
         public int FromRecord { get; private set; }
         public int RecordsPerPage { get; private set; }
         public int CurrentPage { get; private set; }
+        public string TypeFilter { get; private set; }
 
         public int TotalPageCount { get; private set; }
         public long TotalRecordCount { get; private set; }
@@ -39,13 +41,18 @@ namespace PugTrace.Dashboard
         {
             if (page < 1 || page > TotalPageCount) return "#";
 
-            return BasePageUrl + "?page=" + page + "&count=" + RecordsPerPage;
+            return BasePageUrl + "?page=" + page + "&count=" + RecordsPerPage + (TypeFilter == null ? "" : "&type=" + TypeFilter);
         }
 
         public string RecordsPerPageUrl(int perPage)
         {
             if (perPage <= 0) return "#";
-            return BasePageUrl + "?page=1&count=" + perPage;
+            return BasePageUrl + "?page=1&count=" + perPage + (TypeFilter == null ? "" : "&type=" + TypeFilter);
+        }
+
+        public string TypeFilterUrl(string typeFilter)
+        {
+            return BasePageUrl + "?page=1&count=" + RecordsPerPage + (typeFilter == null ? "" : "&type=" + typeFilter);
         }
 
         private ICollection<Item> GenerateItems()

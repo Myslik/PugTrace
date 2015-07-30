@@ -1,0 +1,14 @@
+﻿@* Generator: Template TypeVisibility: Internal GeneratePrettyNames: True TrimLeadingUnderscores : true *@
+@using PugTrace.Dashboard
+@inherits RazorPage
+
+<div class="btn-toolbar-label btn-toolbar-label-sm pull-left" style="margin-left: 5px;">
+    Filter by type:
+</div>
+<div class="btn-toolbar-spacer pull-left"></div>
+<div class="btn-group pull-left">
+    <a class="btn btn-sm btn-default @(null == _pager.TypeFilter ? "active" : null)" href="@_pager.TypeFilterUrl(null)">All</a>
+    <a class="btn btn-sm btn-default @("Information" == _pager.TypeFilter ? "active" : null)" href="@_pager.TypeFilterUrl("Information")">Information</a>
+    <a class="btn btn-sm btn-default @("Critical" == _pager.TypeFilter ? "active" : null)" href="@_pager.TypeFilterUrl("Critical")">Critical</a>
+    <a class="btn btn-sm btn-default @("Error" == _pager.TypeFilter ? "active" : null)" href="@_pager.TypeFilterUrl("Error")">Error</a>
+</div>

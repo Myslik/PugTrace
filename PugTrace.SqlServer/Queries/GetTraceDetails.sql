@@ -1,0 +1,1 @@
+﻿SELECT [Traces].* FROM [PugTrace].[Trace] AS [Traces] WHERE [TraceId] = @id

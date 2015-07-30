@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalConfigurationExtensions.cs" />
+    <EmbeddedResource Include="Queries\GetTraceCount.sql" />
+    <EmbeddedResource Include="Queries\GetTraceDetails.sql" />
+    <Compile Include="Queries\SqlServerQueries.cs" />
     <Compile Include="SqlServerObjectsInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerConnection.cs" />
@@ -62,6 +65,9 @@
       <Project>{ed80f650-e1e0-49a5-b344-c461a51f39d7}</Project>
       <Name>PugTrace</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Queries\GetTraces.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

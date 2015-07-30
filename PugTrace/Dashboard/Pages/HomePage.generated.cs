@@ -64,6 +64,16 @@ WriteLiteral("<div class=\"btn-toolbar btn-toolbar-top\">\r\n    ");
 
             
             #line 11 "..\..\Dashboard\Pages\HomePage.cshtml"
+Write(Html.Filter(this.Pager));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n    ");
+
+
+            
+            #line 12 "..\..\Dashboard\Pages\HomePage.cshtml"
 Write(Html.PerPageSelector(this.Pager));
 
             
@@ -89,7 +99,7 @@ WriteLiteral(@"
 
 
             
-            #line 27 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 28 "..\..\Dashboard\Pages\HomePage.cshtml"
              foreach (var trace in this.Rows)
             {
                 var klass = string.Empty;
@@ -107,7 +117,7 @@ WriteLiteral("                <tr class=\"");
 
 
             
-            #line 36 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 37 "..\..\Dashboard\Pages\HomePage.cshtml"
                       Write(klass);
 
             
@@ -117,7 +127,7 @@ WriteLiteral("\">\r\n                    <td>");
 
 
             
-            #line 37 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 38 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(trace.ApplicationName);
 
             
@@ -127,7 +137,7 @@ WriteLiteral("</td>\r\n                    <td>");
 
 
             
-            #line 38 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 39 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(trace.Source);
 
             
@@ -137,7 +147,7 @@ WriteLiteral("</td>\r\n                    <td>");
 
 
             
-            #line 39 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 40 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(trace.Id);
 
             
@@ -147,7 +157,7 @@ WriteLiteral("</td>\r\n                    <td>");
 
 
             
-            #line 40 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 41 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(trace.EventType);
 
             
@@ -157,7 +167,7 @@ WriteLiteral("</td>\r\n                    <td>");
 
 
             
-            #line 41 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 42 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(Html.RenderDateTime(trace.UtcDateTime.ToLocalTime()));
 
             
@@ -167,7 +177,7 @@ WriteLiteral("</td>\r\n                    <td>");
 
 
             
-            #line 42 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 43 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(trace.MachineName);
 
             
@@ -177,7 +187,7 @@ WriteLiteral("</td>\r\n                    <td>");
 
 
             
-            #line 43 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 44 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(Html.Truncate(trace.Message));
 
             
@@ -187,7 +197,7 @@ WriteLiteral(" <a href=\"");
 
 
             
-            #line 43 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 44 "..\..\Dashboard\Pages\HomePage.cshtml"
                                                           Write(Url.TraceDetails(trace.TraceId.ToString()));
 
             
@@ -197,7 +207,7 @@ WriteLiteral("\">Details…</a></td>\r\n                </tr>\r\n");
 
 
             
-            #line 45 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 46 "..\..\Dashboard\Pages\HomePage.cshtml"
             }
 
             
@@ -205,7 +215,7 @@ WriteLiteral("\">Details…</a></td>\r\n                </tr>\r\n");
             #line hidden
 
             
-            #line 46 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 47 "..\..\Dashboard\Pages\HomePage.cshtml"
              if(this.Rows.Count() == 0)
             {
 
@@ -217,7 +227,7 @@ WriteLiteral("                <tr>\r\n                    <td colspan=\"7\">No t
 
 
             
-            #line 51 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 52 "..\..\Dashboard\Pages\HomePage.cshtml"
             }
 
             
@@ -227,7 +237,7 @@ WriteLiteral("        </tbody>\r\n    </table>\r\n</div>\r\n");
 
 
             
-            #line 55 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 56 "..\..\Dashboard\Pages\HomePage.cshtml"
 Write(Html.Paginator(this.Pager));
 
             

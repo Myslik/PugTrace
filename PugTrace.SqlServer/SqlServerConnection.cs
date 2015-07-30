@@ -1,9 +1,8 @@
-﻿using Dapper;
+﻿using PugTrace.SqlServer.Queries;
 using PugTrace.Storage;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 
 namespace PugTrace.SqlServer
 {
@@ -20,18 +19,14 @@ namespace PugTrace.SqlServer
 
         public SqlConnection Connection { get { return _connection; } }
 
-        public IEnumerable<TraceData> Get(int skip = 0, int top = 20)
+        public IEnumerable<TraceData> Get(int skip = 0, int top = 20, string typeFilter = null)
         {
-            const string sql = @"select * from (select ROW_NUMBER() over(order by [UtcDateTime] desc) as NUMBER, * from [PugTrace].[Trace]) as tbl where NUMBER between (@skip + 1) and (@top + @skip) order by [UtcDateTime] desc";
-
-            return _connection.Query<TraceData>(sql, new { top = top, skip = skip });
+            return _connection.GetTraces(skip, top, typeFilter);
         }
 
         public TraceData GetTraceDetail(int id)
         {
-            const string sql = @"select * from [PugTrace].[Trace] where TraceId = @id";
-
-            return _connection.Query<TraceData>(sql, new { id = id }).SingleOrDefault();
+            return _connection.GetTraceDetails(id);
         }
 
         public virtual void Dispose()
@@ -39,9 +34,9 @@ namespace PugTrace.SqlServer
             _connection.Dispose();
         }
 
-        public int Count()
+        public int Count(string typeFilter = null)
         {
-            return _connection.ExecuteScalar<int>("select count(*) from [PugTrace].[Trace]");
+            return _connection.GetTraceCount(typeFilter);
         }
     }
 }
