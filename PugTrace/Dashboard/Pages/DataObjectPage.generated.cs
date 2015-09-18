@@ -54,42 +54,43 @@ namespace PugTrace.Dashboard.Pages
     internal partial class DataObjectPage : RazorPage
     {
 #line hidden
-
         public override void Execute()
         {
-
-
 WriteLiteral("\r\n");
-
-
-
-
-
-
-
-
 
             
             #line 9 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
   
     JObject obj = Data;
 
-
             
             #line default
             #line hidden
-WriteLiteral(@"<div class=""table-responsive"" style=""margin-bottom: 20px;"">
-    <table class=""table table-striped table-bordered table-condensed"" style=""margin-bottom: 0;"">
-        <thead>
-            <tr class=""success"">
-                <th>Name</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-");
+WriteLiteral("\r\n<div");
 
+WriteLiteral(" class=\"table-responsive\"");
 
+WriteLiteral(" style=\"margin-bottom: 20px;\"");
+
+WriteLiteral(">\r\n    <table");
+
+WriteLiteral(" class=\"table table-striped table-bordered table-condensed\"");
+
+WriteLiteral(" style=\"margin-bottom: 0;\"");
+
+WriteLiteral(">\r\n        <thead>\r\n            <tr");
+
+WriteLiteral(" class=\"success\"");
+
+WriteLiteral(">\r\n                <th>Name</th>\r\n                <th>Value</th>\r\n            </t" +
+"r>\r\n        </thead>\r\n        <tbody>\r\n");
+
+            
+            #line 21 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
+            
+            
+            #line default
+            #line hidden
             
             #line 21 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
              foreach (var prop in obj)
@@ -102,9 +103,13 @@ WriteLiteral(@"<div class=""table-responsive"" style=""margin-bottom: 20px;"">
             
             #line default
             #line hidden
-WriteLiteral("                    <tr>\r\n                        <td colspan=\"2\" class=\"info\"><s" +
-"trong>");
+WriteLiteral("                    <tr>\r\n                        <td");
 
+WriteLiteral(" colspan=\"2\"");
+
+WriteLiteral(" class=\"info\"");
+
+WriteLiteral("><strong>");
 
             
             #line 28 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
@@ -114,7 +119,6 @@ WriteLiteral("                    <tr>\r\n                        <td colspan=\"
             #line default
             #line hidden
 WriteLiteral("</strong></td>\r\n                    </tr>\r\n");
-
 
             
             #line 30 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
@@ -127,7 +131,6 @@ WriteLiteral("</strong></td>\r\n                    </tr>\r\n");
             #line hidden
 WriteLiteral("                        <tr>\r\n                            <td>");
 
-
             
             #line 34 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
                            Write(item.Key);
@@ -135,8 +138,11 @@ WriteLiteral("                        <tr>\r\n                            <td>")
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                            <td style=\"overflow: auto;\">");
+WriteLiteral("</td>\r\n                            <td");
 
+WriteLiteral(" style=\"overflow: auto;\"");
+
+WriteLiteral(">");
 
             
             #line 35 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
@@ -146,7 +152,6 @@ WriteLiteral("</td>\r\n                            <td style=\"overflow: auto;\"
             #line default
             #line hidden
 WriteLiteral("</td>\r\n                        </tr>\r\n");
-
 
             
             #line 37 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
@@ -162,7 +167,6 @@ WriteLiteral("</td>\r\n                        </tr>\r\n");
             #line hidden
 WriteLiteral("                    <tr>\r\n                        <td>");
 
-
             
             #line 44 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
                        Write(prop.Key);
@@ -170,60 +174,25 @@ WriteLiteral("                    <tr>\r\n                        <td>");
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                        <td style=\"overflow: auto;\">\r\n");
+WriteLiteral("</td>\r\n                        <td");
 
+WriteLiteral(" style=\"overflow: auto;\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                            ");
 
             
             #line 46 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-                             if (value.Contains(Environment.NewLine))
-                            {
+                       Write(Html.RenderValue(value));
 
             
             #line default
             #line hidden
-WriteLiteral("                                <pre style=\"border: none; padding: 0;\"><code clas" +
-"s=\"csharp\">");
-
-
-            
-            #line 48 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-                                                                                       Write(value);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</code></pre>\r\n");
-
+WriteLiteral("\r\n                        </td>\r\n                    </tr>\r\n");
 
             
             #line 49 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-                            }
-                            else
-                            {
-                                
-            
-            #line default
-            #line hidden
-            
-            #line 52 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-                           Write(value);
-
-            
-            #line default
-            #line hidden
-            
-            #line 52 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-                                      
-                            }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                        </td>\r\n                    </tr>\r\n");
-
-
-            
-            #line 56 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
                 }
             }
 
@@ -231,7 +200,6 @@ WriteLiteral("                        </td>\r\n                    </tr>\r\n");
             #line default
             #line hidden
 WriteLiteral("        </tbody>\r\n    </table>\r\n</div>");
-
 
         }
     }

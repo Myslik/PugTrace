@@ -54,30 +54,19 @@ namespace PugTrace.Dashboard.Pages
     internal partial class TraceDetailsPage : RazorPage
     {
 #line hidden
-
         public override void Execute()
         {
-
-
 WriteLiteral("\r\n");
-
-
-
-
-
-
-
-
 
             
             #line 9 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
   
     Layout = new LayoutPage();
 
-
             
             #line default
             #line hidden
+WriteLiteral("\r\n");
 
             
             #line 12 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
@@ -95,8 +84,11 @@ WriteLiteral("\r\n");
             
             #line default
             #line hidden
-WriteLiteral("    <dl class=\"dl-horizontal\">\r\n        <dt>Application</dt>\r\n        <dd>");
+WriteLiteral("    <dl");
 
+WriteLiteral(" class=\"dl-horizontal\"");
+
+WriteLiteral(">\r\n        <dt>Application</dt>\r\n        <dd>");
 
             
             #line 24 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
@@ -107,7 +99,6 @@ WriteLiteral("    <dl class=\"dl-horizontal\">\r\n        <dt>Application</dt>\r
             #line hidden
 WriteLiteral("</dd>\r\n        <dt>Source</dt>\r\n        <dd>");
 
-
             
             #line 26 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
        Write(trace.Source);
@@ -116,7 +107,6 @@ WriteLiteral("</dd>\r\n        <dt>Source</dt>\r\n        <dd>");
             #line default
             #line hidden
 WriteLiteral("</dd>\r\n        <dt>Id</dt>\r\n        <dd>");
-
 
             
             #line 28 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
@@ -127,7 +117,6 @@ WriteLiteral("</dd>\r\n        <dt>Id</dt>\r\n        <dd>");
             #line hidden
 WriteLiteral("</dd>\r\n        <dt>Event Type</dt>\r\n        <dd>");
 
-
             
             #line 30 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
        Write(trace.EventType);
@@ -136,7 +125,6 @@ WriteLiteral("</dd>\r\n        <dt>Event Type</dt>\r\n        <dd>");
             #line default
             #line hidden
 WriteLiteral("</dd>\r\n        <dt>Timestamp</dt>\r\n        <dd>");
-
 
             
             #line 32 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
@@ -147,7 +135,6 @@ WriteLiteral("</dd>\r\n        <dt>Timestamp</dt>\r\n        <dd>");
             #line hidden
 WriteLiteral("</dd>\r\n        <dt>Machine</dt>\r\n        <dd>");
 
-
             
             #line 34 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
        Write(trace.MachineName);
@@ -157,7 +144,12 @@ WriteLiteral("</dd>\r\n        <dt>Machine</dt>\r\n        <dd>");
             #line hidden
 WriteLiteral("</dd>\r\n");
 
-
+            
+            #line 35 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+        
+            
+            #line default
+            #line hidden
             
             #line 35 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
          if (!string.IsNullOrEmpty(trace.Message))
@@ -168,10 +160,7 @@ WriteLiteral("</dd>\r\n");
             #line hidden
 WriteLiteral("            <dt>Message</dt>\r\n");
 
-
-
 WriteLiteral("            <dd>");
-
 
             
             #line 38 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
@@ -182,7 +171,6 @@ WriteLiteral("            <dd>");
             #line hidden
 WriteLiteral("</dd>\r\n");
 
-
             
             #line 39 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
         }
@@ -191,7 +179,6 @@ WriteLiteral("</dd>\r\n");
             #line default
             #line hidden
 WriteLiteral("    </dl>\r\n");
-
 
             
             #line 41 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
@@ -226,7 +213,6 @@ WriteLiteral("    </dl>\r\n");
             
             #line default
             #line hidden
-
         }
     }
 }

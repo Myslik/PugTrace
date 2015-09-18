@@ -76,6 +76,23 @@ namespace PugTrace.Dashboard
             _content.Append(textToAppend);
         }
 
+        public virtual void WriteAttribute(string attr,
+                                   Tuple<string, int> token1,
+                                   Tuple<string, int> token2,
+                                   Tuple<Tuple<string, int>, Tuple<object, int>, bool> token3)
+        {
+            object value;
+            if (token3 != null)
+                value = token3.Item2.Item1;
+            else
+                value = string.Empty;
+
+            var output = token1.Item1 + value.ToString() + token2.Item1;
+
+            _content.Append(output);
+        }
+
+
         protected virtual void Write(object value)
         {
             if (value == null)

@@ -33,56 +33,65 @@ namespace PugTrace.Dashboard.Pages
     #line default
     #line hidden
     
+    #line 5 "..\..\Dashboard\Pages\HomePage.cshtml"
+    using PugTrace.Storage;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     internal partial class HomePage : RazorPage
     {
 #line hidden
-
         public override void Execute()
         {
-
-
 WriteLiteral("\r\n");
 
-
-
-
-
-
             
-            #line 6 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 7 "..\..\Dashboard\Pages\HomePage.cshtml"
   
     Layout = new LayoutPage();
     Initialize();
-
+    bool first = true;
 
             
             #line default
             #line hidden
-WriteLiteral("<div class=\"btn-toolbar btn-toolbar-top\">\r\n    ");
+WriteLiteral("\r\n<div");
 
+WriteLiteral(" class=\"btn-toolbar btn-toolbar-top\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("    ");
 
             
-            #line 11 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 13 "..\..\Dashboard\Pages\HomePage.cshtml"
 Write(Html.Filter(this.Pager));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n    ");
+WriteLiteral("\r\n");
 
+WriteLiteral("    ");
 
             
-            #line 12 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 14 "..\..\Dashboard\Pages\HomePage.cshtml"
 Write(Html.PerPageSelector(this.Pager));
 
             
             #line default
             #line hidden
-WriteLiteral(@"
-</div>
-<div class=""table-responsive"">
-    <table class=""table table-hover"">
+WriteLiteral("\r\n</div>\r\n<div");
+
+WriteLiteral(" class=\"table-responsive\"");
+
+WriteLiteral(">\r\n    <table");
+
+WriteLiteral(" class=\"table\"");
+
+WriteLiteral(@">
         <thead>
             <tr>
                 <th>Application</th>
@@ -92,42 +101,44 @@ WriteLiteral(@"
                 <th>Timestamp</th>
                 <th>Machine</th>
                 <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>
-");
+                <th");
 
+WriteLiteral(" style=\"width: 70px;\"");
+
+WriteLiteral("></th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n");
 
             
-            #line 28 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 31 "..\..\Dashboard\Pages\HomePage.cshtml"
+            
+            
+            #line default
+            #line hidden
+            
+            #line 31 "..\..\Dashboard\Pages\HomePage.cshtml"
              foreach (var trace in this.Rows)
             {
-                var klass = string.Empty;
-
-                if (trace.EventType == "Error")
-                {
-                    klass = "danger";
-                }
+                var rowClass = "trace " + trace.EventType.ToLower();
 
 
             
             #line default
             #line hidden
-WriteLiteral("                <tr class=\"");
+WriteLiteral("                <tr");
 
-
+WriteAttribute("class", Tuple.Create(" class=\"", 992), Tuple.Create("\"", 1009)
             
-            #line 37 "..\..\Dashboard\Pages\HomePage.cshtml"
-                      Write(klass);
-
+            #line 35 "..\..\Dashboard\Pages\HomePage.cshtml"
+, Tuple.Create(Tuple.Create("", 1000), Tuple.Create<System.Object, System.Int32>(rowClass
             
             #line default
             #line hidden
-WriteLiteral("\">\r\n                    <td>");
+, 1000), false)
+);
 
+WriteLiteral(">\r\n                    <td>");
 
             
-            #line 38 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 36 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(trace.ApplicationName);
 
             
@@ -135,9 +146,8 @@ WriteLiteral("\">\r\n                    <td>");
             #line hidden
 WriteLiteral("</td>\r\n                    <td>");
 
-
             
-            #line 39 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 37 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(trace.Source);
 
             
@@ -145,9 +155,8 @@ WriteLiteral("</td>\r\n                    <td>");
             #line hidden
 WriteLiteral("</td>\r\n                    <td>");
 
-
             
-            #line 40 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 38 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(trace.Id);
 
             
@@ -155,9 +164,8 @@ WriteLiteral("</td>\r\n                    <td>");
             #line hidden
 WriteLiteral("</td>\r\n                    <td>");
 
-
             
-            #line 41 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 39 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(trace.EventType);
 
             
@@ -165,9 +173,8 @@ WriteLiteral("</td>\r\n                    <td>");
             #line hidden
 WriteLiteral("</td>\r\n                    <td>");
 
-
             
-            #line 42 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 40 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(Html.RenderDateTime(trace.UtcDateTime.ToLocalTime()));
 
             
@@ -175,9 +182,8 @@ WriteLiteral("</td>\r\n                    <td>");
             #line hidden
 WriteLiteral("</td>\r\n                    <td>");
 
-
             
-            #line 43 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 41 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(trace.MachineName);
 
             
@@ -185,49 +191,118 @@ WriteLiteral("</td>\r\n                    <td>");
             #line hidden
 WriteLiteral("</td>\r\n                    <td>");
 
-
             
-            #line 44 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 42 "..\..\Dashboard\Pages\HomePage.cshtml"
                    Write(Html.Truncate(trace.Message));
 
             
             #line default
             #line hidden
-WriteLiteral(" <a href=\"");
+WriteLiteral("</td>\r\n                    <td><a");
 
+WriteAttribute("href", Tuple.Create(" href=\"", 1416), Tuple.Create("\"", 1466)
+            
+            #line 43 "..\..\Dashboard\Pages\HomePage.cshtml"
+, Tuple.Create(Tuple.Create("", 1423), Tuple.Create<System.Object, System.Int32>(Url.TraceDetails(trace.TraceId.ToString())
+            
+            #line default
+            #line hidden
+, 1423), false)
+);
+
+WriteLiteral(" class=\"btn btn-xs btn-default pull-right\"");
+
+WriteLiteral(">Details</a></td>\r\n                </tr>\r\n");
 
             
-            #line 44 "..\..\Dashboard\Pages\HomePage.cshtml"
-                                                          Write(Url.TraceDetails(trace.TraceId.ToString()));
+            #line 45 "..\..\Dashboard\Pages\HomePage.cshtml"
+
+                var exception = trace.GetException();
+                if (exception != null)
+                {
+                    var detailStyle = first ? "" : "display: none;";
 
             
             #line default
             #line hidden
-WriteLiteral("\">Details…</a></td>\r\n                </tr>\r\n");
+WriteLiteral("                    <tr");
 
+WriteLiteral(" class=\"detail\"");
+
+WriteAttribute("style", Tuple.Create(" style=\"", 1775), Tuple.Create("\"", 1795)
+            
+            #line 50 "..\..\Dashboard\Pages\HomePage.cshtml"
+, Tuple.Create(Tuple.Create("", 1783), Tuple.Create<System.Object, System.Int32>(detailStyle
+            
+            #line default
+            #line hidden
+, 1783), false)
+);
+
+WriteLiteral(">\r\n                        <td");
+
+WriteLiteral(" colspan=\"8\"");
+
+WriteLiteral(" style=\"padding-left: 20px; background-color: #f5f5f5;\"");
+
+WriteLiteral(">\r\n                            <h3>");
 
             
-            #line 46 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 52 "..\..\Dashboard\Pages\HomePage.cshtml"
+                           Write(exception.TypeName);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h3>\r\n                            <h4>");
+
+            
+            #line 53 "..\..\Dashboard\Pages\HomePage.cshtml"
+                           Write(exception.Message);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h4>\r\n");
+
+WriteLiteral("                            ");
+
+            
+            #line 54 "..\..\Dashboard\Pages\HomePage.cshtml"
+                       Write(Html.RenderExceptionStackTrace(exception.Detail));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                        </td>\r\n                    </tr>\r\n");
+
+            
+            #line 57 "..\..\Dashboard\Pages\HomePage.cshtml"
+                    first = false;
+                }
             }
 
             
             #line default
             #line hidden
+WriteLiteral("            ");
 
             
-            #line 47 "..\..\Dashboard\Pages\HomePage.cshtml"
-             if(this.Rows.Count() == 0)
+            #line 60 "..\..\Dashboard\Pages\HomePage.cshtml"
+             if (this.Rows.Count() == 0)
             {
 
             
             #line default
             #line hidden
-WriteLiteral("                <tr>\r\n                    <td colspan=\"7\">No traces.</td>\r\n      " +
-"          </tr>\r\n");
+WriteLiteral("                <tr>\r\n                    <td");
 
+WriteLiteral(" colspan=\"8\"");
+
+WriteLiteral(">No traces.</td>\r\n                </tr>\r\n");
 
             
-            #line 52 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 65 "..\..\Dashboard\Pages\HomePage.cshtml"
             }
 
             
@@ -235,15 +310,13 @@ WriteLiteral("                <tr>\r\n                    <td colspan=\"7\">No t
             #line hidden
 WriteLiteral("        </tbody>\r\n    </table>\r\n</div>\r\n");
 
-
             
-            #line 56 "..\..\Dashboard\Pages\HomePage.cshtml"
+            #line 69 "..\..\Dashboard\Pages\HomePage.cshtml"
 Write(Html.Paginator(this.Pager));
 
             
             #line default
             #line hidden
-
         }
     }
 }

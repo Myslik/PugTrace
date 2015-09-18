@@ -43,14 +43,7 @@
                     <tr>
                         <td>@prop.Key</td>
                         <td style="overflow: auto;">
-                            @if (value.Contains(Environment.NewLine))
-                            {
-                                <pre style="border: none; padding: 0;"><code class="csharp">@value</code></pre>
-                            }
-                            else
-                            {
-                                @value
-                            }
+                            @Html.RenderValue(value)
                         </td>
                     </tr>
                 }

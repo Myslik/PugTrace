@@ -158,6 +158,7 @@
     <Compile Include="IAuthorizationFilter.cs" />
     <Compile Include="IGlobalConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\TraceDataExtensions.cs" />
     <Compile Include="TraceListenerBase.cs" />
     <Compile Include="Storage\IStorageConnection.cs" />
     <Compile Include="Storage\TraceData.cs" />

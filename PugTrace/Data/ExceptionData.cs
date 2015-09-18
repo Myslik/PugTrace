@@ -7,14 +7,26 @@ namespace PugTrace.Data
 {
     public class ExceptionData : ITraceData
     {
-        public string HostName { get; private set; }
-        public string TypeName { get; private set; }
-        public string Message { get; private set; }
-        public string Source { get; private set; }
-        public string Detail { get; private set; }
-        public string User { get; private set; }
-        public DateTime Time { get; private set; }
-        public int StatusCode { get; private set; }
+        public string HostName { get; set; }
+        public string TypeName { get; set; }
+        public string Message { get; set; }
+        public string Source { get; set; }
+        public string Detail { get; set; }
+        public string User { get; set; }
+        public DateTime Time { get; set; }
+        public int StatusCode { get; set; }
+
+        public bool IsValid ()
+        {
+            return !string.IsNullOrEmpty(TypeName)
+                && !string.IsNullOrEmpty(Message)
+                && !string.IsNullOrEmpty(Source);
+        }
+
+        public ExceptionData()
+        {
+
+        }
 
         public ExceptionData(Exception e)
         {

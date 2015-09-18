@@ -50,3 +50,13 @@ html, body {
 .btn-toolbar-top {
     margin-bottom: 10px;
 }
+
+.trace.error {
+    cursor: pointer;
+    color: #fff;
+    background-color: #c0392b;
+}
+
+.detail.hide {
+    display: none;
+}

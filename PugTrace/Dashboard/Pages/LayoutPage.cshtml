@@ -71,5 +71,14 @@
 
     <script src="@Url.To("/js")"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+        $(function () {
+            $(".trace.error").on("click", function () {
+                var current = $(this).next();
+                $(".detail").not(current).hide();
+                current.show();
+            });
+        });
+    </script>
 </body>
 </html>

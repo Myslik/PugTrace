@@ -2,6 +2,7 @@
 using PugTrace.Dashboard.Pages;
 using System;
 using System.Net;
+using System.Text.RegularExpressions;
 
 namespace PugTrace.Dashboard
 {
@@ -61,6 +62,28 @@ namespace PugTrace.Dashboard
         public string HtmlEncode(string text)
         {
             return WebUtility.HtmlEncode(text);
+        }
+
+        private static Regex exceptionPattern = new Regex(@"^(.*):(.*)(\n\s+at\s(.*))+$", RegexOptions.Compiled);
+        public bool IsExceptionStackTrace(string value)
+        {
+            return exceptionPattern.IsMatch(value);
+        }
+
+        public NonEscapedString RenderExceptionStackTrace(string value)
+        {
+            return Raw(string.Format("<pre style=\"border: none; padding: 0; margin: 0;\"><code class=\"csharp\">{0}</code></pre>", value));
+        }
+
+        public NonEscapedString RenderValue(string value)
+        {
+            if (IsExceptionStackTrace(value))
+            {
+                return RenderExceptionStackTrace(value);
+            } else
+            {
+                return new NonEscapedString(HtmlEncode(value));
+            }
         }
     }
 }
