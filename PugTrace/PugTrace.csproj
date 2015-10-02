@@ -45,10 +45,6 @@
       <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -62,36 +58,14 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppBuilderExtensions.cs" />
     <Compile Include="DashboardOptions.cs" />
     <Compile Include="Dashboard\CombinedResourceDispatcher.cs" />
     <Compile Include="Dashboard\DashboardRoutes.cs" />
+    <Compile Include="Dashboard\DataObject.cs" />
+    <Compile Include="Dashboard\DataRow.cs" />
     <Compile Include="Dashboard\DateTimeExtensions.cs" />
     <Compile Include="Dashboard\EmbeddedResourceDispatcher.cs" />
     <Compile Include="Dashboard\HtmlHelper.cs" />
@@ -100,13 +74,16 @@
     <Compile Include="Dashboard\MiddlewareExtensions.cs" />
     <Compile Include="Dashboard\NonEscapedString.cs" />
     <Compile Include="Dashboard\Pager.cs" />
-    <Compile Include="Dashboard\Pages\DataObjectPage.cs" />
     <Compile Include="Dashboard\Pages\DataObjectPage.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataObjectPage.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Dashboard\Pages\HomePage.cs" />
+    <Compile Include="Dashboard\Pages\DataRowPage.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataRowPage.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard\Pages\HomePage.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -117,25 +94,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LayoutPage.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Dashboard\Pages\TraceDetailsPage.cs" />
     <Compile Include="Dashboard\Pages\TraceDetailsPage.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TraceDetailsPage.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Dashboard\Pages\_Filter.cs" />
     <Compile Include="Dashboard\Pages\_Filter.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>_Filter.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Dashboard\Pages\_Paginator.cs" />
     <Compile Include="Dashboard\Pages\_Paginator.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>_Paginator.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Dashboard\Pages\_PerPageSelector.cs" />
     <Compile Include="Dashboard\Pages\_PerPageSelector.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -146,6 +119,7 @@
     <Compile Include="Dashboard\RequestDispatcherContext.cs" />
     <Compile Include="Dashboard\RouteCollection.cs" />
     <Compile Include="Dashboard\RouteCollectionExtensions.cs" />
+    <Compile Include="Dashboard\TracesPage.cs" />
     <Compile Include="Dashboard\UrlHelper.cs" />
     <Compile Include="Data\DataCollector.cs" />
     <Compile Include="Data\DataCollectorExtensions.cs" />
@@ -176,6 +150,10 @@
     <None Include="Dashboard\Pages\DataObjectPage.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>DataObjectPage.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Dashboard\Pages\DataRowPage.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DataRowPage.generated.cs</LastGenOutput>
     </None>
     <None Include="Dashboard\Pages\HomePage.cshtml">
       <Generator>RazorGenerator</Generator>

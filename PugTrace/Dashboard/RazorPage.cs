@@ -1,13 +1,16 @@
 ﻿using Microsoft.Owin;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Text;
 
 namespace PugTrace.Dashboard
 {
+    public abstract class RazorPage<TModel> : RazorPage
+    {
+        public TModel Model { get; set; }
+    }
+
     public abstract class RazorPage
     {
         private readonly StringBuilder _content = new StringBuilder();
@@ -56,6 +59,7 @@ namespace PugTrace.Dashboard
             Url = parentPage.Url;
 
             GenerationTime = parentPage.GenerationTime;
+            OnAssigned();
         }
 
         internal void Assign(RequestDispatcherContext context)
@@ -67,7 +71,10 @@ namespace PugTrace.Dashboard
             Storage = context.Storage;
             AppPath = context.AppPath;
             Url = new UrlHelper(context.OwinEnvironment);
+            OnAssigned();
         }
+
+        public virtual void OnAssigned() { }
 
         protected void WriteLiteral(string textToAppend)
         {
@@ -128,5 +135,4 @@ namespace PugTrace.Dashboard
                        : WebUtility.HtmlEncode(text);
         }
     }
-
 }

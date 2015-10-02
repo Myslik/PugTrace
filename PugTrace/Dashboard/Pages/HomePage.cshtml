@@ -1,12 +1,10 @@
 ﻿@* Generator: Template TypeVisibility: Internal GeneratePrettyNames: True *@
-@using System
 @using PugTrace.Dashboard
 @using PugTrace.Dashboard.Pages
 @using PugTrace.Storage;
-@inherits RazorPage
+@inherits TracesPage
 @{
     Layout = new LayoutPage();
-    Initialize();
     bool first = true;
 }
 <div class="btn-toolbar btn-toolbar-top">
@@ -28,7 +26,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var trace in this.Rows)
+            @foreach (var trace in this.Model)
             {
                 var rowClass = "trace " + trace.EventType.ToLower();
 
@@ -57,7 +55,7 @@
                     first = false;
                 }
             }
-            @if (this.Rows.Count() == 0)
+            @if (this.Count == 0)
             {
                 <tr>
                     <td colspan="8">No traces.</td>

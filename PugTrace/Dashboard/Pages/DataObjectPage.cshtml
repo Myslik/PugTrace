@@ -1,14 +1,6 @@
 ﻿@* Generator: Template TypeVisibility: Internal GeneratePrettyNames: True *@
-@using System
-@using System.Linq
 @using PugTrace.Dashboard
-@using PugTrace.Dashboard.Pages
-@using Newtonsoft.Json
-@using Newtonsoft.Json.Linq
-@inherits RazorPage
-@{
-    JObject obj = Data;
-}
+@inherits RazorPage<DataObject>
 <div class="table-responsive" style="margin-bottom: 20px;">
     <table class="table table-striped table-bordered table-condensed" style="margin-bottom: 0;">
         <thead>
@@ -18,34 +10,19 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var prop in obj)
+            @foreach(var row in Model.Rows)
             {
-                if (prop.Value.Type == JTokenType.Object)
+                @Html.DataRow(row)
+            }
+            @foreach (var obj in Model.Objects)
+            {
+                <tr>
+                    <td colspan="2" class="info"><strong>@obj.Key</strong></td>
+                </tr>
+
+                foreach (var item in obj.Rows)
                 {
-                    var dict = prop.Value.Value<JObject>();
-
-                    <tr>
-                        <td colspan="2" class="info"><strong>@prop.Key</strong></td>
-                    </tr>
-
-                    foreach (var item in dict)
-                    {
-                        <tr>
-                            <td>@item.Key</td>
-                            <td style="overflow: auto;">@item.Value.ToString()</td>
-                        </tr>
-                    }
-                }
-                else
-                {
-                    var value = prop.Value.ToString();
-
-                    <tr>
-                        <td>@prop.Key</td>
-                        <td style="overflow: auto;">
-                            @Html.RenderValue(value)
-                        </td>
-                    </tr>
+                    @Html.DataRow(item)
                 }
             }
         </tbody>

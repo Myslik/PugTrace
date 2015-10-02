@@ -1,15 +1,22 @@
 ﻿using PugTrace.Storage;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
-namespace PugTrace.Dashboard.Pages
+namespace PugTrace.Dashboard
 {
-    partial class HomePage
+    public abstract class TracesPage : RazorPage<IEnumerable<TraceData>>
     {
-        public IEnumerable<TraceData> Rows { get; private set; }
-        public Pager Pager { get; private set; }
+        public TracesPage ()
+        {
+            Model = Enumerable.Empty<TraceData>();
+        }
 
-        public void Initialize()
+        public Pager Pager { get; set; }
+
+        public long Count { get { return Model.Count(); } }
+
+        public override void OnAssigned()
         {
             int page;
             int rowsPerPage;
@@ -35,9 +42,9 @@ namespace PugTrace.Dashboard.Pages
                 {
                     throw new ArgumentOutOfRangeException("page");
                 }
-                this.Rows = connection.Get(skip, top, typeFilter);
+                Model = connection.Get(skip, top, typeFilter);
             }
-            this.Pager = new Pager(page, rowsPerPage, rowCount, typeFilter);
+            Pager = new Pager(page, rowsPerPage, rowCount, typeFilter);
         }
     }
 }

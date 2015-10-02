@@ -11,208 +11,160 @@
 
 namespace PugTrace.Dashboard.Pages
 {
-    
-    #line 2 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
     using System;
-    
-    #line default
-    #line hidden
     using System.Collections.Generic;
-    
-    #line 3 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
     using System.Linq;
-    
-    #line default
-    #line hidden
     using System.Text;
     
-    #line 6 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-    using Newtonsoft.Json;
-    
-    #line default
-    #line hidden
-    
-    #line 7 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-    using Newtonsoft.Json.Linq;
-    
-    #line default
-    #line hidden
-    
-    #line 4 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+    #line 2 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
     using PugTrace.Dashboard;
     
     #line default
     #line hidden
     
-    #line 5 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+    #line 3 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
     using PugTrace.Dashboard.Pages;
     
     #line default
     #line hidden
     
+    #line 4 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+    using PugTrace.Storage;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    internal partial class TraceDetailsPage : RazorPage
+    internal partial class TraceDetailsPage : RazorPage<TraceData>
     {
 #line hidden
+
         public override void Execute()
         {
+
+
 WriteLiteral("\r\n");
 
+
+
+
+
+
             
-            #line 9 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+            #line 6 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
   
     Layout = new LayoutPage();
 
+
             
             #line default
             #line hidden
-WriteLiteral("\r\n");
+WriteLiteral("<dl class=\"dl-horizontal\">\r\n    <dt>Application</dt>\r\n    <dd>");
+
 
             
-            #line 12 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
- using (var connection = Storage.GetConnection())
-{
-    var trace = connection.GetTraceDetail(TraceId);
-    JArray json = null;
+            #line 11 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+   Write(Model.ApplicationName);
 
-    if (!string.IsNullOrEmpty(trace.Data))
+            
+            #line default
+            #line hidden
+WriteLiteral("</dd>\r\n    <dt>Source</dt>\r\n    <dd>");
+
+
+            
+            #line 13 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+   Write(Model.Source);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</dd>\r\n    <dt>Id</dt>\r\n    <dd>");
+
+
+            
+            #line 15 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+   Write(Model.Id);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</dd>\r\n    <dt>Event Type</dt>\r\n    <dd>");
+
+
+            
+            #line 17 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+   Write(Model.EventType);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</dd>\r\n    <dt>Timestamp</dt>\r\n    <dd>");
+
+
+            
+            #line 19 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+   Write(Model.UtcDateTime.ToString("f"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</dd>\r\n    <dt>Machine</dt>\r\n    <dd>");
+
+
+            
+            #line 21 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+   Write(Model.MachineName);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</dd>\r\n");
+
+
+            
+            #line 22 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+     if (!string.IsNullOrEmpty(Model.Message))
     {
-        json = JArray.Parse(trace.Data);
-    }
-
 
             
             #line default
             #line hidden
-WriteLiteral("    <dl");
+WriteLiteral("        <dt>Message</dt>\r\n");
 
-WriteLiteral(" class=\"dl-horizontal\"");
 
-WriteLiteral(">\r\n        <dt>Application</dt>\r\n        <dd>");
+
+WriteLiteral("        <dd>");
+
 
             
-            #line 24 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-       Write(trace.ApplicationName);
+            #line 25 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+       Write(Model.Message);
 
             
             #line default
             #line hidden
-WriteLiteral("</dd>\r\n        <dt>Source</dt>\r\n        <dd>");
+WriteLiteral("</dd>\r\n");
+
 
             
             #line 26 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-       Write(trace.Source);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</dd>\r\n        <dt>Id</dt>\r\n        <dd>");
-
-            
-            #line 28 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-       Write(trace.Id);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</dd>\r\n        <dt>Event Type</dt>\r\n        <dd>");
-
-            
-            #line 30 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-       Write(trace.EventType);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</dd>\r\n        <dt>Timestamp</dt>\r\n        <dd>");
-
-            
-            #line 32 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-       Write(trace.UtcDateTime.ToString("f"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</dd>\r\n        <dt>Machine</dt>\r\n        <dd>");
-
-            
-            #line 34 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-       Write(trace.MachineName);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</dd>\r\n");
-
-            
-            #line 35 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-        
-            
-            #line default
-            #line hidden
-            
-            #line 35 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-         if (!string.IsNullOrEmpty(trace.Message))
-        {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("            <dt>Message</dt>\r\n");
-
-WriteLiteral("            <dd>");
-
-            
-            #line 38 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-           Write(trace.Message);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</dd>\r\n");
-
-            
-            #line 39 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-        }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("    </dl>\r\n");
-
-            
-            #line 41 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-
-    if (json != null)
-    {
-        foreach (var property in json)
-        {
-            if (property.Type == JTokenType.Object)
-            {
-                var obj = property.Value<JObject>();
-
-                
-            
-            #line default
-            #line hidden
-            
-            #line 50 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-           Write(Html.DataObject(obj));
-
-            
-            #line default
-            #line hidden
-            
-            #line 50 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
-                                     
-            }
-        }
     }
-}
 
             
             #line default
             #line hidden
+WriteLiteral("</dl>\r\n\r\n");
+
+
+            
+            #line 29 "..\..\Dashboard\Pages\TraceDetailsPage.cshtml"
+Write(Html.RenderData(Model.Data));
+
+            
+            #line default
+            #line hidden
+
         }
     }
 }

@@ -7,7 +7,7 @@ namespace PugTrace.Dashboard
     {
         private static readonly string[] Javascripts =
         {
-            "jquery-1.11.3.min.js", 
+            "jquery-1.11.3.min.js",
             "bootstrap.min.js",
             "highlight.pack.js"
         };
@@ -23,7 +23,15 @@ namespace PugTrace.Dashboard
         {
             Routes = new RouteCollection();
             Routes.AddRazorPage("/", x => new HomePage());
-            Routes.AddRazorPage("/traces/(?<TraceId>\\d+)", x => new TraceDetailsPage(int.Parse(x.Groups["TraceId"].Value)));
+            Routes.AddRazorPage("/traces/(?<TraceId>\\d+)", x =>
+            {
+                using (var connection = TraceStorage.Current.GetConnection())
+                {
+                    var traceId = int.Parse(x.Groups["TraceId"].Value);
+                    var model = connection.GetTraceDetail(traceId);
+                    return new TraceDetailsPage { Model = model };
+                }
+            });
 
             #region Embedded static content
 

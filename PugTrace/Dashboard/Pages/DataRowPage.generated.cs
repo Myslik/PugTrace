@@ -16,14 +16,14 @@ namespace PugTrace.Dashboard.Pages
     using System.Linq;
     using System.Text;
     
-    #line 2 "..\..\Dashboard\Pages\_PerPageSelector.cshtml"
+    #line 2 "..\..\Dashboard\Pages\DataRowPage.cshtml"
     using PugTrace.Dashboard;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    internal partial class PerPageSelector : RazorPage<Pager>
+    internal partial class DataRowPage : RazorPage<DataRow>
     {
 #line hidden
 
@@ -35,34 +35,27 @@ WriteLiteral("\r\n");
 
 
 
-WriteLiteral("\r\n<div class=\"btn-group pull-right paginator\">\r\n");
+WriteLiteral("<tr>\r\n    <td>");
 
 
             
-            #line 6 "..\..\Dashboard\Pages\_PerPageSelector.cshtml"
-     foreach (var count in new[] { 10, 20, 50, 100, 500 })
-    {
-        
-            
-            #line default
-            #line hidden
-            
-            #line 8 "..\..\Dashboard\Pages\_PerPageSelector.cshtml"
-   Write(Html.Link(count.ToString(), Model.RecordsPerPageUrl(count), "btn btn-sm btn-default", count == Model.RecordsPerPage));
+            #line 5 "..\..\Dashboard\Pages\DataRowPage.cshtml"
+   Write(Model.Key);
 
             
             #line default
             #line hidden
+WriteLiteral("</td>\r\n    <td style=\"overflow: auto;\">\r\n        ");
+
+
             
-            #line 8 "..\..\Dashboard\Pages\_PerPageSelector.cshtml"
-                                                                                                                             
-    }
+            #line 7 "..\..\Dashboard\Pages\DataRowPage.cshtml"
+   Write(Html.RenderValue(Model.Value));
 
             
             #line default
             #line hidden
-WriteLiteral("</div>\r\n<div class=\"btn-toolbar-spacer pull-right\"></div>\r\n<div class=\"btn-toolba" +
-"r-label btn-toolbar-label-sm pull-right\">\r\n    Items per page:\r\n</div>");
+WriteLiteral("\r\n    </td>\r\n</tr>");
 
 
         }

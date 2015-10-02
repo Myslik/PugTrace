@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Security;
 using System.Threading;
-using System.Web;
 
 namespace PugTrace.Data
 {
@@ -14,7 +13,6 @@ namespace PugTrace.Data
         public string Detail { get; set; }
         public string User { get; set; }
         public DateTime Time { get; set; }
-        public int StatusCode { get; set; }
 
         public bool IsValid ()
         {
@@ -50,13 +48,6 @@ namespace PugTrace.Data
             Detail = e.ToString();
             User = Thread.CurrentPrincipal.Identity.Name ?? string.Empty;
             Time = DateTime.Now;
-
-            var httpException = e as HttpException;
-
-            if (httpException != null)
-            {
-                StatusCode = httpException.GetHttpCode();
-            }
         }
     }
 }

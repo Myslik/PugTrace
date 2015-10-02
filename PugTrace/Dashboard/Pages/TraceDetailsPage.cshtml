@@ -1,54 +1,29 @@
 ﻿@* Generator: Template TypeVisibility: Internal GeneratePrettyNames: True *@
-@using System
-@using System.Linq
 @using PugTrace.Dashboard
 @using PugTrace.Dashboard.Pages
-@using Newtonsoft.Json
-@using Newtonsoft.Json.Linq
-@inherits RazorPage
+@using PugTrace.Storage
+@inherits RazorPage<TraceData>
 @{
     Layout = new LayoutPage();
 }
-@using (var connection = Storage.GetConnection())
-{
-    var trace = connection.GetTraceDetail(TraceId);
-    JArray json = null;
-
-    if (!string.IsNullOrEmpty(trace.Data))
+<dl class="dl-horizontal">
+    <dt>Application</dt>
+    <dd>@Model.ApplicationName</dd>
+    <dt>Source</dt>
+    <dd>@Model.Source</dd>
+    <dt>Id</dt>
+    <dd>@Model.Id</dd>
+    <dt>Event Type</dt>
+    <dd>@Model.EventType</dd>
+    <dt>Timestamp</dt>
+    <dd>@Model.UtcDateTime.ToString("f")</dd>
+    <dt>Machine</dt>
+    <dd>@Model.MachineName</dd>
+    @if (!string.IsNullOrEmpty(Model.Message))
     {
-        json = JArray.Parse(trace.Data);
+        <dt>Message</dt>
+        <dd>@Model.Message</dd>
     }
+</dl>
 
-    <dl class="dl-horizontal">
-        <dt>Application</dt>
-        <dd>@trace.ApplicationName</dd>
-        <dt>Source</dt>
-        <dd>@trace.Source</dd>
-        <dt>Id</dt>
-        <dd>@trace.Id</dd>
-        <dt>Event Type</dt>
-        <dd>@trace.EventType</dd>
-        <dt>Timestamp</dt>
-        <dd>@trace.UtcDateTime.ToString("f")</dd>
-        <dt>Machine</dt>
-        <dd>@trace.MachineName</dd>
-        @if (!string.IsNullOrEmpty(trace.Message))
-        {
-            <dt>Message</dt>
-            <dd>@trace.Message</dd>
-        }
-    </dl>
-
-    if (json != null)
-    {
-        foreach (var property in json)
-        {
-            if (property.Type == JTokenType.Object)
-            {
-                var obj = property.Value<JObject>();
-
-                @Html.DataObject(obj)
-            }
-        }
-    }
-}
+@Html.RenderData(Model.Data)

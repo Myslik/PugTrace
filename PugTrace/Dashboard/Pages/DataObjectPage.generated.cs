@@ -11,188 +11,106 @@
 
 namespace PugTrace.Dashboard.Pages
 {
-    
-    #line 2 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
     using System;
-    
-    #line default
-    #line hidden
     using System.Collections.Generic;
-    
-    #line 3 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
     using System.Linq;
-    
-    #line default
-    #line hidden
     using System.Text;
     
-    #line 6 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-    using Newtonsoft.Json;
-    
-    #line default
-    #line hidden
-    
-    #line 7 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-    using Newtonsoft.Json.Linq;
-    
-    #line default
-    #line hidden
-    
-    #line 4 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
+    #line 2 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
     using PugTrace.Dashboard;
     
     #line default
     #line hidden
     
-    #line 5 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-    using PugTrace.Dashboard.Pages;
-    
-    #line default
-    #line hidden
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    internal partial class DataObjectPage : RazorPage
+    internal partial class DataObjectPage : RazorPage<DataObject>
     {
 #line hidden
+
         public override void Execute()
         {
+
+
 WriteLiteral("\r\n");
 
-            
-            #line 9 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-  
-    JObject obj = Data;
+
+
+WriteLiteral(@"<div class=""table-responsive"" style=""margin-bottom: 20px;"">
+    <table class=""table table-striped table-bordered table-condensed"" style=""margin-bottom: 0;"">
+        <thead>
+            <tr class=""success"">
+                <th>Name</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+");
+
 
             
-            #line default
-            #line hidden
-WriteLiteral("\r\n<div");
-
-WriteLiteral(" class=\"table-responsive\"");
-
-WriteLiteral(" style=\"margin-bottom: 20px;\"");
-
-WriteLiteral(">\r\n    <table");
-
-WriteLiteral(" class=\"table table-striped table-bordered table-condensed\"");
-
-WriteLiteral(" style=\"margin-bottom: 0;\"");
-
-WriteLiteral(">\r\n        <thead>\r\n            <tr");
-
-WriteLiteral(" class=\"success\"");
-
-WriteLiteral(">\r\n                <th>Name</th>\r\n                <th>Value</th>\r\n            </t" +
-"r>\r\n        </thead>\r\n        <tbody>\r\n");
-
-            
-            #line 21 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 21 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-             foreach (var prop in obj)
+            #line 13 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
+             foreach(var row in Model.Rows)
             {
-                if (prop.Value.Type == JTokenType.Object)
+                
+            
+            #line default
+            #line hidden
+            
+            #line 15 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
+           Write(Html.DataRow(row));
+
+            
+            #line default
+            #line hidden
+            
+            #line 15 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
+                                  
+            }
+
+            
+            #line default
+            #line hidden
+
+            
+            #line 17 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
+             foreach (var obj in Model.Objects)
+            {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                <tr>\r\n                    <td colspan=\"2\" class=\"info\"><strong>");
+
+
+            
+            #line 20 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
+                                                    Write(obj.Key);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</strong></td>\r\n                </tr>\r\n");
+
+
+            
+            #line 22 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
+
+                foreach (var item in obj.Rows)
                 {
-                    var dict = prop.Value.Value<JObject>();
-
+                    
+            
+            #line default
+            #line hidden
+            
+            #line 25 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
+               Write(Html.DataRow(item));
 
             
             #line default
             #line hidden
-WriteLiteral("                    <tr>\r\n                        <td");
-
-WriteLiteral(" colspan=\"2\"");
-
-WriteLiteral(" class=\"info\"");
-
-WriteLiteral("><strong>");
-
             
-            #line 28 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-                                                        Write(prop.Key);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</strong></td>\r\n                    </tr>\r\n");
-
-            
-            #line 30 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-
-                    foreach (var item in dict)
-                    {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                        <tr>\r\n                            <td>");
-
-            
-            #line 34 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-                           Write(item.Key);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</td>\r\n                            <td");
-
-WriteLiteral(" style=\"overflow: auto;\"");
-
-WriteLiteral(">");
-
-            
-            #line 35 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-                                                   Write(item.Value.ToString());
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</td>\r\n                        </tr>\r\n");
-
-            
-            #line 37 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-                    }
-                }
-                else
-                {
-                    var value = prop.Value.ToString();
-
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                    <tr>\r\n                        <td>");
-
-            
-            #line 44 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-                       Write(prop.Key);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</td>\r\n                        <td");
-
-WriteLiteral(" style=\"overflow: auto;\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                            ");
-
-            
-            #line 46 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
-                       Write(Html.RenderValue(value));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                        </td>\r\n                    </tr>\r\n");
-
-            
-            #line 49 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
+            #line 25 "..\..\Dashboard\Pages\DataObjectPage.cshtml"
+                                       
                 }
             }
 
@@ -200,6 +118,7 @@ WriteLiteral("\r\n                        </td>\r\n                    </tr>\r\n
             #line default
             #line hidden
 WriteLiteral("        </tbody>\r\n    </table>\r\n</div>");
+
 
         }
     }

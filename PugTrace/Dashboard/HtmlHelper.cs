@@ -2,6 +2,7 @@
 using PugTrace.Dashboard.Pages;
 using System;
 using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace PugTrace.Dashboard
@@ -16,26 +17,58 @@ namespace PugTrace.Dashboard
             _page = page;
         }
 
-        public NonEscapedString DataObject(JObject data)
+        public NonEscapedString RenderData(string data)
         {
-            return RenderPartial(new DataObjectPage(data));
+            var builder = new StringBuilder();
+            JArray json = null;
+
+            if (!string.IsNullOrEmpty(data))
+            {
+                json = JArray.Parse(data);
+            }
+
+            if (json != null)
+            {
+                foreach (var property in json)
+                {
+                    if (property.Type == JTokenType.Object)
+                    {
+                        var obj = property.Value<JObject>();
+                        var dataObject = new DataObject(obj);
+
+                        builder.AppendLine(DataObject(dataObject).ToString());
+                    }
+                }
+            }
+
+            return Raw(builder.ToString());
+        }
+
+        public NonEscapedString DataObject(DataObject data)
+        {
+            return RenderPartial(new DataObjectPage { Model = data });
+        }
+
+        public NonEscapedString DataRow(DataRow row)
+        {
+            return RenderPartial(new DataRowPage { Model = row });
         }
 
         public NonEscapedString Filter(Pager pager)
         {
-            return RenderPartial(new Filter(pager));
+            return RenderPartial(new Filter { Model = pager });
         }
 
         public NonEscapedString Paginator(Pager pager)
         {
             if (pager == null) throw new ArgumentNullException("pager");
-            return RenderPartial(new Paginator(pager));
+            return RenderPartial(new Paginator { Model = pager });
         }
 
         public NonEscapedString PerPageSelector(Pager pager)
         {
             if (pager == null) throw new ArgumentNullException("pager");
-            return RenderPartial(new PerPageSelector(pager));
+            return RenderPartial(new PerPageSelector { Model = pager });
         }
 
         public NonEscapedString RenderPartial(RazorPage partialPage)
@@ -80,10 +113,18 @@ namespace PugTrace.Dashboard
             if (IsExceptionStackTrace(value))
             {
                 return RenderExceptionStackTrace(value);
-            } else
+            }
+            else
             {
                 return new NonEscapedString(HtmlEncode(value));
             }
+        }
+
+        public NonEscapedString Link(string text, string href, string classes = "", bool isActive = false, bool isDisabled = false)
+        {
+            classes = string.Format("{0} {1} {2}", classes, isActive ? "active" : "", isDisabled ? "disabled" : "").Trim();
+            var classAttr = string.IsNullOrEmpty(classes) ? "" : string.Format("class=\"{0}\" ", classes);
+            return Raw(string.Format("<a {2}href=\"{1}\">{0}</a>", text, href, classAttr));
         }
     }
 }

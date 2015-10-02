@@ -23,103 +23,72 @@ namespace PugTrace.Dashboard.Pages
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    internal partial class Filter : RazorPage
+    internal partial class Filter : RazorPage<Pager>
     {
 #line hidden
-
         public override void Execute()
         {
-
-
 WriteLiteral("\r\n");
 
+WriteLiteral("<div");
 
+WriteLiteral(" class=\"btn-toolbar-label btn-toolbar-label-sm pull-left\"");
 
-WriteLiteral("\r\n<div class=\"btn-toolbar-label btn-toolbar-label-sm pull-left\" style=\"margin-lef" +
-"t: 5px;\">\r\n    Filter by type:\r\n</div>\r\n<div class=\"btn-toolbar-spacer pull-left" +
-"\"></div>\r\n<div class=\"btn-group pull-left\">\r\n    <a class=\"btn btn-sm btn-defaul" +
-"t ");
+WriteLiteral(" style=\"margin-left: 5px;\"");
 
+WriteLiteral(">\r\n    Filter by type:\r\n</div>\r\n<div");
+
+WriteLiteral(" class=\"btn-toolbar-spacer pull-left\"");
+
+WriteLiteral("></div>\r\n<div");
+
+WriteLiteral(" class=\"btn-group pull-left\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("    ");
 
             
             #line 10 "..\..\Dashboard\Pages\_Filter.cshtml"
-                                 Write(null == _pager.TypeFilter ? "active" : null);
+Write(Html.Link("All", Model.TypeFilterUrl(null), "btn btn-sm btn-default", Model.TypeFilter == null));
 
             
             #line default
             #line hidden
-WriteLiteral("\" href=\"");
+WriteLiteral("\r\n");
 
-
-            
-            #line 10 "..\..\Dashboard\Pages\_Filter.cshtml"
-                                                                                      Write(_pager.TypeFilterUrl(null));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\">All</a>\r\n    <a class=\"btn btn-sm btn-default ");
-
+WriteLiteral("    ");
 
             
             #line 11 "..\..\Dashboard\Pages\_Filter.cshtml"
-                                 Write("Information" == _pager.TypeFilter ? "active" : null);
+Write(Html.Link("Information", Model.TypeFilterUrl("Information"), "btn btn-sm btn-default", Model.TypeFilter == "Information"));
 
             
             #line default
             #line hidden
-WriteLiteral("\" href=\"");
+WriteLiteral("\r\n");
 
-
-            
-            #line 11 "..\..\Dashboard\Pages\_Filter.cshtml"
-                                                                                               Write(_pager.TypeFilterUrl("Information"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\">Information</a>\r\n    <a class=\"btn btn-sm btn-default ");
-
+WriteLiteral("    ");
 
             
             #line 12 "..\..\Dashboard\Pages\_Filter.cshtml"
-                                 Write("Critical" == _pager.TypeFilter ? "active" : null);
+Write(Html.Link("Critical", Model.TypeFilterUrl("Critical"), "btn btn-sm btn-default", Model.TypeFilter == "Critical"));
 
             
             #line default
             #line hidden
-WriteLiteral("\" href=\"");
+WriteLiteral("\r\n");
 
-
-            
-            #line 12 "..\..\Dashboard\Pages\_Filter.cshtml"
-                                                                                            Write(_pager.TypeFilterUrl("Critical"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\">Critical</a>\r\n    <a class=\"btn btn-sm btn-default ");
-
+WriteLiteral("    ");
 
             
             #line 13 "..\..\Dashboard\Pages\_Filter.cshtml"
-                                 Write("Error" == _pager.TypeFilter ? "active" : null);
+Write(Html.Link("Error", Model.TypeFilterUrl("Error"), "btn btn-sm btn-default", Model.TypeFilter == "Error"));
 
             
             #line default
             #line hidden
-WriteLiteral("\" href=\"");
-
-
-            
-            #line 13 "..\..\Dashboard\Pages\_Filter.cshtml"
-                                                                                         Write(_pager.TypeFilterUrl("Error"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\">Error</a>\r\n</div>");
-
+WriteLiteral("\r\n</div>");
 
         }
     }

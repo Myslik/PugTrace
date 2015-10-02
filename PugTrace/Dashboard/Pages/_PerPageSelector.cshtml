@@ -1,11 +1,11 @@
 ﻿@* Generator: Template TypeVisibility: Internal GeneratePrettyNames: True TrimLeadingUnderscores : true *@
-@inherits PugTrace.Dashboard.RazorPage
+@using PugTrace.Dashboard
+@inherits RazorPage<Pager>
 
 <div class="btn-group pull-right paginator">
     @foreach (var count in new[] { 10, 20, 50, 100, 500 })
     {
-        <a class="btn btn-sm btn-default @(count == _pager.RecordsPerPage ? "active" : null)"
-           href="@_pager.RecordsPerPageUrl(count)">@count</a>
+        @Html.Link(count.ToString(), Model.RecordsPerPageUrl(count), "btn btn-sm btn-default", count == Model.RecordsPerPage)
     }
 </div>
 <div class="btn-toolbar-spacer pull-right"></div>
