@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using PugTrace.Storage;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
@@ -37,6 +38,11 @@ namespace PugTrace.SqlServer.Queries
         internal static int GetTraceCount(this SqlConnection connection, string type)
         {
             return connection.ExecuteScalar<int>(_sqlGetTraceCount, new { type = type });
+        }
+
+        internal static IEnumerable<TraceData> SearchTraces(this SqlConnection connection, DateTime from, DateTime to, string value = null)
+        {
+            return connection.Query<TraceData>("SELECT [Traces].* FROM [PugTrace].[Trace] AS [Traces] WHERE ([UtcDateTime] BETWEEN @From AND @To) AND ([Message] LIKE '%" + value + "%')", new { From = from, To = to });
         }
     }
 }

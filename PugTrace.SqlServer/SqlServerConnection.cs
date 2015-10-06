@@ -38,5 +38,10 @@ namespace PugTrace.SqlServer
         {
             return _connection.GetTraceCount(typeFilter);
         }
+
+        public IEnumerable<TraceData> Search(DateTime from, DateTime to, string searchValue = null)
+        {
+            return _connection.SearchTraces(from, to, searchValue);
+        }
     }
 }

@@ -11,6 +11,13 @@
     @Html.Filter(this.Pager)
     @Html.PerPageSelector(this.Pager)
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.Search(this.Pager)
+    </div>
+</div>
+
 <div class="table-responsive">
     <table class="table">
         <thead>

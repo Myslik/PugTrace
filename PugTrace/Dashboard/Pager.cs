@@ -11,7 +11,7 @@ namespace PugTrace.Dashboard
         private int _startPageIndex = 1;
         private int _endPageIndex = 1;
 
-        public Pager(int page, int perPage, long total, string typeFilter)
+        public Pager(int page, int perPage, long total, string typeFilter, string fromTime, string toTime, string value)
         {
             FromRecord = (page - 1) * perPage;
             RecordsPerPage = perPage > 0 ? perPage : DefaultRecordsPerPage;
@@ -19,6 +19,9 @@ namespace PugTrace.Dashboard
             CurrentPage = FromRecord / RecordsPerPage + 1;
             TotalPageCount = (int)Math.Ceiling((double)TotalRecordCount / RecordsPerPage);
             TypeFilter = typeFilter;
+            MsgFrom = fromTime;
+            MsgTo = toTime;
+            SearchValue = value;
 
             PagerItems = GenerateItems();
         }
@@ -29,6 +32,9 @@ namespace PugTrace.Dashboard
         public int RecordsPerPage { get; private set; }
         public int CurrentPage { get; private set; }
         public string TypeFilter { get; private set; }
+        public string MsgFrom { get; set; }
+        public string MsgTo { get; set; }
+        public string SearchValue { get; set; }
 
         public int TotalPageCount { get; private set; }
         public long TotalRecordCount { get; private set; }
@@ -51,6 +57,37 @@ namespace PugTrace.Dashboard
         public string TypeFilterUrl(string typeFilter)
         {
             return BasePageUrl + "?page=1&count=" + RecordsPerPage + (typeFilter == null ? "" : "&type=" + typeFilter);
+        }
+
+        public string GetFromTime() {
+            if (MsgFrom != null)
+            {
+                return MsgFrom;
+            }
+            else {
+                return "";
+            }
+        }
+
+        public string GetToTime()
+        {
+            if (MsgTo != null)
+            {
+                return MsgTo;
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public string GetSearchValue()
+        {
+            if (SearchValue != null) {
+                return SearchValue;
+            } else {
+                return "";
+            }
         }
 
         private ICollection<Item> GenerateItems()
