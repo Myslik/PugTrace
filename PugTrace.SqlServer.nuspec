@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>PugTrace.SqlServer</id>
-    <version>0.4</version>
+    <version>0.5.1</version>
     <authors>Premysl Krajcovic</authors>
     <owners>myslik</owners>
     <licenseUrl>https://github.com/Myslik/PugTrace/blob/master/LICENSE</licenseUrl>
@@ -17,7 +17,7 @@
       <group targetFramework=".NETFramework4.5">
         <dependency id="Dapper" version="1.42" />
         <dependency id="Newtonsoft.Json" version="7.0.1" />
-        <dependency id="PugTrace" version="0.4" />
+        <dependency id="PugTrace" version="0.5.1" />
       </group>
     </dependencies>
     <frameworkAssemblies>

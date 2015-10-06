@@ -63,7 +63,16 @@ namespace PugTrace.Data
 
             foreach (var key in collection.AllKeys)
             {
-                dict.Add(collection[key].Name, collection[key].Value);
+                var name = collection[key].Name;
+                var value = collection[key].Value;
+                if (dict.ContainsKey(name))
+                {
+                    dict[name] = string.Format("{0}|{1}", dict[name], value);
+                }
+                else
+                {
+                    dict.Add(collection[key].Name, collection[key].Value);
+                }
             }
             return dict;
         }
