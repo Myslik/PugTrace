@@ -79,7 +79,9 @@ Write(Html.PerPageSelector(this.Pager));
             #line hidden
 WriteLiteral("\r\n</div>\r\n\r\n<div");
 
-WriteLiteral(" class=\"row\"");
+WriteLiteral(" id=\"search-bar\"");
+
+WriteLiteral(" class=\"row hide\"");
 
 WriteLiteral(">\r\n    <div");
 
@@ -138,14 +140,14 @@ WriteLiteral("></th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>
             #line hidden
 WriteLiteral("                <tr");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 1066), Tuple.Create("\"", 1083)
+WriteAttribute("class", Tuple.Create(" class=\"", 1087), Tuple.Create("\"", 1104)
             
             #line 40 "..\..\Dashboard\Pages\HomePage.cshtml"
-, Tuple.Create(Tuple.Create("", 1074), Tuple.Create<System.Object, System.Int32>(rowClass
+, Tuple.Create(Tuple.Create("", 1095), Tuple.Create<System.Object, System.Int32>(rowClass
             
             #line default
             #line hidden
-, 1074), false)
+, 1095), false)
 );
 
 WriteLiteral(">\r\n                    <td>");
@@ -213,14 +215,14 @@ WriteLiteral("</td>\r\n                    <td>");
             #line hidden
 WriteLiteral("</td>\r\n                    <td><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1490), Tuple.Create("\"", 1540)
+WriteAttribute("href", Tuple.Create(" href=\"", 1511), Tuple.Create("\"", 1561)
             
             #line 48 "..\..\Dashboard\Pages\HomePage.cshtml"
-, Tuple.Create(Tuple.Create("", 1497), Tuple.Create<System.Object, System.Int32>(Url.TraceDetails(trace.TraceId.ToString())
+, Tuple.Create(Tuple.Create("", 1518), Tuple.Create<System.Object, System.Int32>(Url.TraceDetails(trace.TraceId.ToString())
             
             #line default
             #line hidden
-, 1497), false)
+, 1518), false)
 );
 
 WriteLiteral(" class=\"btn btn-xs btn-default pull-right\"");
@@ -242,14 +244,14 @@ WriteLiteral("                    <tr");
 
 WriteLiteral(" class=\"detail\"");
 
-WriteAttribute("style", Tuple.Create(" style=\"", 1849), Tuple.Create("\"", 1869)
+WriteAttribute("style", Tuple.Create(" style=\"", 1870), Tuple.Create("\"", 1890)
             
             #line 55 "..\..\Dashboard\Pages\HomePage.cshtml"
-, Tuple.Create(Tuple.Create("", 1857), Tuple.Create<System.Object, System.Int32>(detailStyle
+, Tuple.Create(Tuple.Create("", 1878), Tuple.Create<System.Object, System.Int32>(detailStyle
             
             #line default
             #line hidden
-, 1857), false)
+, 1878), false)
 );
 
 WriteLiteral(">\r\n                        <td");

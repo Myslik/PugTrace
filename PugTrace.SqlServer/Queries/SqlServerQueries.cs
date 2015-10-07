@@ -14,6 +14,7 @@ namespace PugTrace.SqlServer.Queries
         private static string _sqlGetTraces = GetScript("GetTraces");
         private static string _sqlGetTraceDetails = GetScript("GetTraceDetails");
         private static string _sqlGetTraceCount = GetScript("GetTraceCount");
+        private static string _sqlGetSearch = GetScript("GetSearch");
 
         private static string GetScript(string scriptName)
         {
@@ -40,9 +41,9 @@ namespace PugTrace.SqlServer.Queries
             return connection.ExecuteScalar<int>(_sqlGetTraceCount, new { type = type });
         }
 
-        internal static IEnumerable<TraceData> SearchTraces(this SqlConnection connection, DateTime from, DateTime to, string value = null)
+        internal static IEnumerable<TraceData> SearchTraces(this SqlConnection connection, DateTime from, DateTime to, string value = null, string filterType = null)
         {
-            return connection.Query<TraceData>("SELECT [Traces].* FROM [PugTrace].[Trace] AS [Traces] WHERE ([UtcDateTime] BETWEEN @From AND @To) AND ([Message] LIKE '%" + value + "%')", new { From = from, To = to });
+            return connection.Query<TraceData>(_sqlGetSearch, new { From = from, To = to, Value = value, FilterType = filterType });
         }
     }
 }

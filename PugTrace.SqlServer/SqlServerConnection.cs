@@ -39,9 +39,9 @@ namespace PugTrace.SqlServer
             return _connection.GetTraceCount(typeFilter);
         }
 
-        public IEnumerable<TraceData> Search(DateTime from, DateTime to, string searchValue = null)
+        public IEnumerable<TraceData> Search(DateTime from, DateTime to, string searchValue = null, string filterType = null)
         {
-            return _connection.SearchTraces(from, to, searchValue);
+            return _connection.SearchTraces(from, to, searchValue, filterType);
         }
     }
 }

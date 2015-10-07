@@ -48,7 +48,7 @@ WriteLiteral(" class=\"col-md-1 btn-toolbar-label\"");
 
 WriteLiteral(">\r\n                <span");
 
-WriteLiteral(" style=\"margin-left: 15px;\"");
+WriteLiteral(" style=\"margin-left: 10px; padding-top: 30px;\"");
 
 WriteLiteral(">Search:</span>\r\n            </div>\r\n            <div");
 
@@ -62,14 +62,14 @@ WriteLiteral(" class=\"form-control\"");
 
 WriteLiteral(" name=\"from\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 544), Tuple.Create("\"", 572)
+WriteAttribute("value", Tuple.Create(" value=\"", 563), Tuple.Create("\"", 591)
             
             #line 13 "..\..\Dashboard\Pages\_Search.cshtml"
-, Tuple.Create(Tuple.Create("", 552), Tuple.Create<System.Object, System.Int32>(Model.GetFromTime()
+, Tuple.Create(Tuple.Create("", 571), Tuple.Create<System.Object, System.Int32>(Model.GetFromTime()
             
             #line default
             #line hidden
-, 552), false)
+, 571), false)
 );
 
 WriteLiteral(" />\r\n            </div>\r\n            <div");
@@ -84,14 +84,14 @@ WriteLiteral(" class=\"form-control\"");
 
 WriteLiteral(" name=\"to\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 751), Tuple.Create("\"", 777)
+WriteAttribute("value", Tuple.Create(" value=\"", 770), Tuple.Create("\"", 796)
             
             #line 17 "..\..\Dashboard\Pages\_Search.cshtml"
-, Tuple.Create(Tuple.Create("", 759), Tuple.Create<System.Object, System.Int32>(Model.GetToTime()
+, Tuple.Create(Tuple.Create("", 778), Tuple.Create<System.Object, System.Int32>(Model.GetToTime()
             
             #line default
             #line hidden
-, 759), false)
+, 778), false)
 );
 
 WriteLiteral(" />\r\n            </div>\r\n            <div");
@@ -100,20 +100,38 @@ WriteLiteral(" class=\"col-md-2 form-group\"");
 
 WriteLiteral(">\r\n                <label>Message contains:</label>\r\n                <input");
 
+WriteLiteral(" id=\"search-value\"");
+
 WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" class=\"form-control\"");
 
 WriteLiteral(" name=\"val\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 966), Tuple.Create("\"", 997)
+WriteAttribute("value", Tuple.Create(" value=\"", 1003), Tuple.Create("\"", 1034)
             
             #line 21 "..\..\Dashboard\Pages\_Search.cshtml"
-, Tuple.Create(Tuple.Create("", 974), Tuple.Create<System.Object, System.Int32>(Model.GetSearchValue()
+            , Tuple.Create(Tuple.Create("", 1011), Tuple.Create<System.Object, System.Int32>(Model.GetSearchValue()
             
             #line default
             #line hidden
-, 974), false)
+, 1011), false)
+);
+
+WriteLiteral(" />\r\n                <input");
+
+WriteLiteral(" type=\"hidden\"");
+
+WriteLiteral(" name=\"type\"");
+
+WriteAttribute("value", Tuple.Create(" value=\"", 1088), Tuple.Create("\"", 1118)
+            
+            #line 22 "..\..\Dashboard\Pages\_Search.cshtml"
+, Tuple.Create(Tuple.Create("", 1096), Tuple.Create<System.Object, System.Int32>(Model.GetFilterType()
+            
+            #line default
+            #line hidden
+, 1096), false)
 );
 
 WriteLiteral(" />\r\n            </div>\r\n            <div");
@@ -128,7 +146,20 @@ WriteLiteral(" class=\"btn btn-default\"");
 
 WriteLiteral(" style=\"margin-top: 25px;\"");
 
-WriteLiteral(">Search</button>\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>");
+WriteLiteral(@">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    var searchButton2 = document.getElementById('search-button');
+    var searchValue = document.getElementById('search-value').value;
+    if (searchValue != """") {
+        searchButton.classList.add('btn-success');
+        document.getElementById('search-bar').classList.remove('hide');
+    }
+</script>");
 
         }
     }

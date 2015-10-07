@@ -21,7 +21,7 @@ namespace PugTrace.Dashboard
             int page;
             int rowsPerPage;
             int rowCount;
-            string typeFilter;
+            string typeFilter = null;
             string from = null;
             string to = null;
             string value = null;
@@ -30,7 +30,7 @@ namespace PugTrace.Dashboard
             if (Query("val") != "") { value = Query("val"); }
             int.TryParse(Query("page"), out page);
             int.TryParse(Query("count"), out rowsPerPage);
-            typeFilter = Query("type");
+            if (Query("type") != "") { typeFilter = Query("type"); }
             if (page == 0)
             {
                 page = 1;
@@ -51,7 +51,7 @@ namespace PugTrace.Dashboard
                 if ((from != null) && (to != null) && (value != null)) {
                     DateTime fromDate = DateTime.ParseExact(from, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
                     DateTime toDate = DateTime.ParseExact(to, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                    Model = connection.Search(fromDate, toDate, value);
+                    Model = connection.Search(fromDate, toDate, value, typeFilter);
                     rowCount = Model.Count();
                 } else {
                     Model = connection.Get(skip, top, typeFilter);

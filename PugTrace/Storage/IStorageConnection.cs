@@ -11,6 +11,6 @@ namespace PugTrace.Storage
 
         TraceData GetTraceDetail(int id);
 
-        IEnumerable<TraceData> Search(DateTime from, DateTime to, string searchValue = null);
+        IEnumerable<TraceData> Search(DateTime from, DateTime to, string searchValue = null, string typeFilter = null);
     }
 }

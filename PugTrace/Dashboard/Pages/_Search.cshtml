@@ -6,7 +6,7 @@
     <form method="get">
         <div class="row">
             <div class="col-md-1 btn-toolbar-label">
-                <span style="margin-left: 15px;">Search:</span>
+                <span style="margin-left: 10px; padding-top: 30px;">Search:</span>
             </div>
             <div class="col-md-2 form-group">
                 <label>Find from:</label>
@@ -18,7 +18,8 @@
             </div>
             <div class="col-md-2 form-group">
                 <label>Message contains:</label>
-                <input type="text" class="form-control" name="val" value="@Model.GetSearchValue()" />
+                <input id="search-value" type="text" class="form-control" name="val" value="@Model.GetSearchValue()" />
+                <input type="hidden" name="type" value="@Model.GetFilterType()" />
             </div>
             <div class="col-md-2">
                 <button type="submit" class="btn btn-default" style="margin-top: 25px;">Search</button>
@@ -26,3 +27,12 @@
         </div>
     </form>
 </div>
+
+<script>
+    var searchButton2 = document.getElementById('search-button');
+    var searchValue = document.getElementById('search-value').value;
+    if (searchValue != "") {
+        searchButton.classList.add('btn-success');
+        document.getElementById('search-bar').classList.remove('hide');
+    }
+</script>

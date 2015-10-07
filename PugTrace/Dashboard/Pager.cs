@@ -90,6 +90,18 @@ namespace PugTrace.Dashboard
             }
         }
 
+        public string GetFilterType()
+        {
+            if (TypeFilter != null)
+            {
+                return TypeFilter;
+            }
+            else
+            {
+                return "";
+            }
+        }
+
         private ICollection<Item> GenerateItems()
         {
             // start page index
