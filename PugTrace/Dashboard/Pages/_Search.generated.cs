@@ -46,6 +46,8 @@ WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"col-md-1 btn-toolbar-label\"");
 
+WriteLiteral(" style=\"margin-top: 20px;\"");
+
 WriteLiteral(">\r\n                <span");
 
 WriteLiteral(" style=\"margin-left: 10px; padding-top: 30px;\"");
@@ -62,14 +64,14 @@ WriteLiteral(" class=\"form-control\"");
 
 WriteLiteral(" name=\"from\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 563), Tuple.Create("\"", 591)
+WriteAttribute("value", Tuple.Create(" value=\"", 589), Tuple.Create("\"", 617)
             
             #line 13 "..\..\Dashboard\Pages\_Search.cshtml"
-, Tuple.Create(Tuple.Create("", 571), Tuple.Create<System.Object, System.Int32>(Model.GetFromTime()
+, Tuple.Create(Tuple.Create("", 597), Tuple.Create<System.Object, System.Int32>(Model.GetFromTime()
             
             #line default
             #line hidden
-, 571), false)
+, 597), false)
 );
 
 WriteLiteral(" />\r\n            </div>\r\n            <div");
@@ -84,14 +86,14 @@ WriteLiteral(" class=\"form-control\"");
 
 WriteLiteral(" name=\"to\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 770), Tuple.Create("\"", 796)
+WriteAttribute("value", Tuple.Create(" value=\"", 796), Tuple.Create("\"", 822)
             
             #line 17 "..\..\Dashboard\Pages\_Search.cshtml"
-, Tuple.Create(Tuple.Create("", 778), Tuple.Create<System.Object, System.Int32>(Model.GetToTime()
+, Tuple.Create(Tuple.Create("", 804), Tuple.Create<System.Object, System.Int32>(Model.GetToTime()
             
             #line default
             #line hidden
-, 778), false)
+, 804), false)
 );
 
 WriteLiteral(" />\r\n            </div>\r\n            <div");
@@ -108,14 +110,14 @@ WriteLiteral(" class=\"form-control\"");
 
 WriteLiteral(" name=\"val\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 1003), Tuple.Create("\"", 1034)
+WriteAttribute("value", Tuple.Create(" value=\"", 1029), Tuple.Create("\"", 1060)
             
             #line 21 "..\..\Dashboard\Pages\_Search.cshtml"
-            , Tuple.Create(Tuple.Create("", 1011), Tuple.Create<System.Object, System.Int32>(Model.GetSearchValue()
+            , Tuple.Create(Tuple.Create("", 1037), Tuple.Create<System.Object, System.Int32>(Model.GetSearchValue()
             
             #line default
             #line hidden
-, 1011), false)
+, 1037), false)
 );
 
 WriteLiteral(" />\r\n                <input");
@@ -124,14 +126,14 @@ WriteLiteral(" type=\"hidden\"");
 
 WriteLiteral(" name=\"type\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 1088), Tuple.Create("\"", 1118)
+WriteAttribute("value", Tuple.Create(" value=\"", 1114), Tuple.Create("\"", 1144)
             
             #line 22 "..\..\Dashboard\Pages\_Search.cshtml"
-, Tuple.Create(Tuple.Create("", 1096), Tuple.Create<System.Object, System.Int32>(Model.GetFilterType()
+, Tuple.Create(Tuple.Create("", 1122), Tuple.Create<System.Object, System.Int32>(Model.GetFilterType()
             
             #line default
             #line hidden
-, 1096), false)
+, 1122), false)
 );
 
 WriteLiteral(" />\r\n            </div>\r\n            <div");
@@ -153,7 +155,7 @@ WriteLiteral(@">Search</button>
 </div>
 
 <script>
-    var searchButton2 = document.getElementById('search-button');
+    var searchButton = document.getElementById('search-button');
     var searchValue = document.getElementById('search-value').value;
     if (searchValue != """") {
         searchButton.classList.add('btn-success');

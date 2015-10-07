@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <form method="get">
         <div class="row">
-            <div class="col-md-1 btn-toolbar-label">
+            <div class="col-md-1 btn-toolbar-label" style="margin-top: 20px;">
                 <span style="margin-left: 10px; padding-top: 30px;">Search:</span>
             </div>
             <div class="col-md-2 form-group">
@@ -29,7 +29,7 @@
 </div>
 
 <script>
-    var searchButton2 = document.getElementById('search-button');
+    var searchButton = document.getElementById('search-button');
     var searchValue = document.getElementById('search-value').value;
     if (searchValue != "") {
         searchButton.classList.add('btn-success');
