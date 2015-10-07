@@ -88,26 +88,46 @@ Write(Html.Link("Error", Model.TypeFilterUrl("Error"), "btn btn-sm btn-default",
             
             #line default
             #line hidden
-WriteLiteral("\r\n    <button");
+WriteLiteral("\r\n</div>\r\n\r\n<div");
 
-WriteLiteral(" id=\"search-button\"");
+WriteLiteral(" class=\"btn-group pull-left\"");
+
+WriteLiteral(">\r\n    <button");
+
+WriteLiteral(" id=\"search-button-on\"");
 
 WriteLiteral(" class=\"btn btn-sm btn-default\"");
 
-WriteLiteral(@">Search</button>
+WriteLiteral(">Search</button>\r\n    <a");
+
+WriteLiteral(" id=\"search-button-off\"");
+
+WriteLiteral(" class=\"btn btn-sm btn-success hide\"");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 1020), Tuple.Create("\"", 1038)
+            
+            #line 18 "..\..\Dashboard\Pages\_Filter.cshtml"
+, Tuple.Create(Tuple.Create("", 1027), Tuple.Create<System.Object, System.Int32>(Url.Home()
+            
+            #line default
+            #line hidden
+, 1027), false)
+);
+
+WriteLiteral(@">
+        Search
+    </a>
 </div>
 
 <script>
-    var searchButton = document.getElementById('search-button');
-    searchButton.onclick = function () {
+    var searchButtonOn = document.getElementById('search-button-on');
+    var searchButtonOff = document.getElementById('search-button-off');
+
+    searchButtonOn.onclick = function () {
         var searchBar = document.getElementById('search-bar');
-        if (searchButton.classList.contains(""btn-success"")) {
-            searchButton.classList.remove('btn-success');
-            searchBar.classList.add('hide');
-        } else {
-            searchButton.classList.add('btn-success');
+            searchButtonOn.classList.add('hide');
             searchBar.classList.remove('hide');
-        }
+            searchButtonOff.classList.remove('hide');
     }
 </script>");
 

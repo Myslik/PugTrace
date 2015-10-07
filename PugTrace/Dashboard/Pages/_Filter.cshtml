@@ -11,19 +11,23 @@
     @Html.Link("Information", Model.TypeFilterUrl("Information"), "btn btn-sm btn-default", Model.TypeFilter == "Information")
     @Html.Link("Critical", Model.TypeFilterUrl("Critical"), "btn btn-sm btn-default", Model.TypeFilter == "Critical")
     @Html.Link("Error", Model.TypeFilterUrl("Error"), "btn btn-sm btn-default", Model.TypeFilter == "Error")
-    <button id="search-button" class="btn btn-sm btn-default">Search</button>
+</div>
+
+<div class="btn-group pull-left">
+    <button id="search-button-on" class="btn btn-sm btn-default">Search</button>
+    <a id="search-button-off" class="btn btn-sm btn-success hide" href="@Url.Home()">
+        Search
+    </a>
 </div>
 
 <script>
-    var searchButton = document.getElementById('search-button');
-    searchButton.onclick = function () {
+    var searchButtonOn = document.getElementById('search-button-on');
+    var searchButtonOff = document.getElementById('search-button-off');
+
+    searchButtonOn.onclick = function () {
         var searchBar = document.getElementById('search-bar');
-        if (searchButton.classList.contains("btn-success")) {
-            searchButton.classList.remove('btn-success');
-            searchBar.classList.add('hide');
-        } else {
-            searchButton.classList.add('btn-success');
+            searchButtonOn.classList.add('hide');
             searchBar.classList.remove('hide');
-        }
+            searchButtonOff.classList.remove('hide');
     }
 </script>

@@ -127,15 +127,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TraceDetailsPage.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard\Pages\_Filter1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Filter.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard\Pages\_Search.generated.cs">
       <DependentUpon>_Search.cshtml</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Dashboard\Pages\_Filter.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_Filter.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\Pages\_Paginator.generated.cs">
       <AutoGen>True</AutoGen>
@@ -206,7 +206,7 @@
     </Content>
     <None Include="Dashboard\Pages\_Filter.cshtml">
       <Generator>RazorGenerator</Generator>
-      <LastGenOutput>_Filter.generated.cs</LastGenOutput>
+      <LastGenOutput>_Filter1.generated.cs</LastGenOutput>
     </None>
     <None Include="Dashboard\Pages\_Paginator.cshtml">
       <Generator>RazorGenerator</Generator>

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using PugTrace.Storage;
+using System.Web;
 
 namespace PugTrace.Dashboard
 {
@@ -56,7 +59,12 @@ namespace PugTrace.Dashboard
 
         public string TypeFilterUrl(string typeFilter)
         {
-            return BasePageUrl + "?page=1&count=" + RecordsPerPage + (typeFilter == null ? "" : "&type=" + typeFilter);
+            
+            if((MsgFrom != null) && (MsgTo != null) && (SearchValue != null)){
+                return BasePageUrl + "?from=" + MsgFrom + "&to=" + MsgTo + "&val=" + SearchValue + "&type="+typeFilter;
+            }else{
+                return BasePageUrl + "?page=1&count=" + RecordsPerPage + (typeFilter == null ? "" : "&type=" + typeFilter);
+            }
         }
 
         public string GetFromTime() {

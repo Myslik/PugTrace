@@ -44,19 +44,11 @@ WriteLiteral(" class=\"row\"");
 
 WriteLiteral(">\r\n            <div");
 
-WriteLiteral(" class=\"col-md-1 btn-toolbar-label\"");
-
-WriteLiteral(" style=\"margin-top: 20px;\"");
-
-WriteLiteral(">\r\n                <span");
-
-WriteLiteral(" style=\"margin-left: 10px; padding-top: 30px;\"");
-
-WriteLiteral(">Search:</span>\r\n            </div>\r\n            <div");
-
 WriteLiteral(" class=\"col-md-2 form-group\"");
 
 WriteLiteral(">\r\n                <label>Find from:</label>\r\n                <input");
+
+WriteLiteral(" id=\"search-from\"");
 
 WriteLiteral(" type=\"date\"");
 
@@ -64,14 +56,14 @@ WriteLiteral(" class=\"form-control\"");
 
 WriteLiteral(" name=\"from\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 589), Tuple.Create("\"", 617)
+WriteAttribute("value", Tuple.Create(" value=\"", 422), Tuple.Create("\"", 450)
             
-            #line 13 "..\..\Dashboard\Pages\_Search.cshtml"
-, Tuple.Create(Tuple.Create("", 597), Tuple.Create<System.Object, System.Int32>(Model.GetFromTime()
+            #line 10 "..\..\Dashboard\Pages\_Search.cshtml"
+             , Tuple.Create(Tuple.Create("", 430), Tuple.Create<System.Object, System.Int32>(Model.GetFromTime()
             
             #line default
             #line hidden
-, 597), false)
+, 430), false)
 );
 
 WriteLiteral(" />\r\n            </div>\r\n            <div");
@@ -80,20 +72,22 @@ WriteLiteral(" class=\"col-md-2 form-group\"");
 
 WriteLiteral(">\r\n                <label>Find to:</label>\r\n                <input");
 
+WriteLiteral(" id=\"search-to\"");
+
 WriteLiteral(" type=\"date\"");
 
 WriteLiteral(" class=\"form-control\"");
 
 WriteLiteral(" name=\"to\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 796), Tuple.Create("\"", 822)
+WriteAttribute("value", Tuple.Create(" value=\"", 644), Tuple.Create("\"", 670)
             
-            #line 17 "..\..\Dashboard\Pages\_Search.cshtml"
-, Tuple.Create(Tuple.Create("", 804), Tuple.Create<System.Object, System.Int32>(Model.GetToTime()
+            #line 14 "..\..\Dashboard\Pages\_Search.cshtml"
+         , Tuple.Create(Tuple.Create("", 652), Tuple.Create<System.Object, System.Int32>(Model.GetToTime()
             
             #line default
             #line hidden
-, 804), false)
+, 652), false)
 );
 
 WriteLiteral(" />\r\n            </div>\r\n            <div");
@@ -110,14 +104,14 @@ WriteLiteral(" class=\"form-control\"");
 
 WriteLiteral(" name=\"val\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 1029), Tuple.Create("\"", 1060)
+WriteAttribute("value", Tuple.Create(" value=\"", 877), Tuple.Create("\"", 908)
             
-            #line 21 "..\..\Dashboard\Pages\_Search.cshtml"
-            , Tuple.Create(Tuple.Create("", 1037), Tuple.Create<System.Object, System.Int32>(Model.GetSearchValue()
+            #line 18 "..\..\Dashboard\Pages\_Search.cshtml"
+             , Tuple.Create(Tuple.Create("", 885), Tuple.Create<System.Object, System.Int32>(Model.GetSearchValue()
             
             #line default
             #line hidden
-, 1037), false)
+, 885), false)
 );
 
 WriteLiteral(" />\r\n                <input");
@@ -126,14 +120,14 @@ WriteLiteral(" type=\"hidden\"");
 
 WriteLiteral(" name=\"type\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 1114), Tuple.Create("\"", 1144)
+WriteAttribute("value", Tuple.Create(" value=\"", 962), Tuple.Create("\"", 992)
             
-            #line 22 "..\..\Dashboard\Pages\_Search.cshtml"
-, Tuple.Create(Tuple.Create("", 1122), Tuple.Create<System.Object, System.Int32>(Model.GetFilterType()
+            #line 19 "..\..\Dashboard\Pages\_Search.cshtml"
+, Tuple.Create(Tuple.Create("", 970), Tuple.Create<System.Object, System.Int32>(Model.GetFilterType()
             
             #line default
             #line hidden
-, 1122), false)
+, 970), false)
 );
 
 WriteLiteral(" />\r\n            </div>\r\n            <div");
@@ -155,10 +149,13 @@ WriteLiteral(@">Search</button>
 </div>
 
 <script>
-    var searchButton = document.getElementById('search-button');
+    var searchButtonOn = document.getElementById('search-button-on');
+    var searchButtonOff = document.getElementById('search-button-off');
+
     var searchValue = document.getElementById('search-value').value;
     if (searchValue != """") {
-        searchButton.classList.add('btn-success');
+        searchButtonOn.classList.add('hide');
+        searchButtonOff.classList.remove('hide');
         document.getElementById('search-bar').classList.remove('hide');
     }
 </script>");
