@@ -24,10 +24,19 @@
     var searchButtonOn = document.getElementById('search-button-on');
     var searchButtonOff = document.getElementById('search-button-off');
 
+    Date.prototype.addHours = function (h) {
+        this.setHours(this.getHours() + h);
+        return this;
+    }
+
     searchButtonOn.onclick = function () {
+        console.log("show first search");
         var searchBar = document.getElementById('search-bar');
             searchButtonOn.classList.add('hide');
             searchBar.classList.remove('hide');
             searchButtonOff.classList.remove('hide');
+            document.getElementById('search-from').valueAsDate = new Date();
+            document.getElementById('search-to').valueAsDate = new Date().addHours(24);
+            document.getElementById('search-value').focus();
     }
 </script>

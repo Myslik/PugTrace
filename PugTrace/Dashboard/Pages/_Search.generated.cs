@@ -166,6 +166,7 @@ WriteLiteral(@">
 
     var searchValue = document.getElementById('search-value').value;
     if (searchValue != """") {
+        console.log(""show search"");
         itemPerPage.classList.add('hide');
         searchButtonOn.classList.add('hide');
         searchButtonOff.classList.remove('hide');

@@ -176,8 +176,9 @@ WriteLiteral(@">
     var searchValue = document.getElementById('search-value').value;
     if (searchValue != """") {
         var paginator = document.getElementById('paginatorId');
-        console.log(paginator);
-        paginator.classList.add('hide');
+        if (paginator != null) { 
+            paginator.classList.add('hide');
+        }
     }
 </script>");
 
