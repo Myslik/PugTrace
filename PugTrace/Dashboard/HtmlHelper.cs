@@ -59,6 +59,11 @@ namespace PugTrace.Dashboard
             return RenderPartial(new Filter { Model = pager });
         }
 
+        public NonEscapedString Search(Pager pager)
+        {
+            return RenderPartial(new Search { Model = pager });
+        }
+
         public NonEscapedString Paginator(Pager pager)
         {
             if (pager == null) throw new ArgumentNullException("pager");
