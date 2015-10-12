@@ -142,20 +142,34 @@ WriteLiteral(" class=\"btn btn-default\"");
 
 WriteLiteral(" style=\"margin-top: 25px;\"");
 
-WriteLiteral(@">Search</button>
-            </div>
-        </div>
-    </form>
+WriteLiteral(">Search</button>\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>\r\n<div");
+
+WriteLiteral(" id=\"search-results\"");
+
+WriteLiteral(" class=\"row hide\"");
+
+WriteLiteral(">\r\n    <div");
+
+WriteLiteral(" class=\"col-md-12\"");
+
+WriteLiteral(@">
+        <h3>Search results:</h3>
+    </div>
 </div>
 
 <script>
     var searchButtonOn = document.getElementById('search-button-on');
     var searchButtonOff = document.getElementById('search-button-off');
+    var searchMsg = document.getElementById('search-results');
+    var itemPerPage = document.getElementById('itemsPerPage');
+    
 
     var searchValue = document.getElementById('search-value').value;
     if (searchValue != """") {
+        itemPerPage.classList.add('hide');
         searchButtonOn.classList.add('hide');
         searchButtonOff.classList.remove('hide');
+        searchMsg.classList.remove('hide');
         document.getElementById('search-bar').classList.remove('hide');
     }
 </script>");

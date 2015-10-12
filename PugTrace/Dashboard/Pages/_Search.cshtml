@@ -24,15 +24,25 @@
         </div>
     </form>
 </div>
+<div id="search-results" class="row hide">
+    <div class="col-md-12">
+        <h3>Search results:</h3>
+    </div>
+</div>
 
 <script>
     var searchButtonOn = document.getElementById('search-button-on');
     var searchButtonOff = document.getElementById('search-button-off');
+    var searchMsg = document.getElementById('search-results');
+    var itemPerPage = document.getElementById('itemsPerPage');
+    
 
     var searchValue = document.getElementById('search-value').value;
     if (searchValue != "") {
+        itemPerPage.classList.add('hide');
         searchButtonOn.classList.add('hide');
         searchButtonOff.classList.remove('hide');
+        searchMsg.classList.remove('hide');
         document.getElementById('search-bar').classList.remove('hide');
     }
 </script>
