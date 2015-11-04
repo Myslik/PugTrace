@@ -2,30 +2,40 @@
 @using PugTrace.Dashboard
 @inherits RazorPage<Pager>
 <div class="btn-toolbar">
-    @if (Model.TotalPageCount > 1)
-    {
-        <div class="btn-group paginator">
-            @foreach (var page in Model.PagerItems)
-            {
-                switch (page.Type)
+        @if (Model.TotalPageCount > 1)
+        {
+            <div id="paginatorId" class="btn-group paginator">
+                @foreach (var page in Model.PagerItems)
                 {
-                    case Pager.ItemType.Page:
-                        @Html.Link(page.PageIndex.ToString(), Model.PageUrl(page.PageIndex), "btn btn-default", Model.CurrentPage == page.PageIndex)
-                        break;
-                    case Pager.ItemType.NextPage:
+                    switch (page.Type)
+                    {
+                        case Pager.ItemType.Page:
+                            @Html.Link(page.PageIndex.ToString(), Model.PageUrl(page.PageIndex), "btn btn-default", Model.CurrentPage == page.PageIndex)
+                            break;
+                        case Pager.ItemType.NextPage:
                         @Html.Link("Next", Model.PageUrl(page.PageIndex), "btn btn-default", isDisabled: Model.CurrentPage == page.PageIndex)
-                        break;
-                    case Pager.ItemType.PrevPage:
+                            break;
+                        case Pager.ItemType.PrevPage:
                         @Html.Link("Prev", Model.PageUrl(page.PageIndex), "btn btn-default", isDisabled: Model.CurrentPage == page.PageIndex)
-                        break;
-                    case Pager.ItemType.MorePage:
+                            break;
+                        case Pager.ItemType.MorePage:
                         <a href="#" class="btn btn-default disabled">…</a>
-                        break;
+                            break;
+                    }
                 }
-            }
-        </div>
-        <div class="btn-toolbar-spacer"></div>
-    }
+            </div>
+            <div class="btn-toolbar-spacer"></div>
+        }
 
     <div class="btn-toolbar-label">Total items: @Model.TotalRecordCount</div>
 </div>
+
+<script type="text/javascript">
+    var searchValue = document.getElementById('search-value').value;
+    if (searchValue != "") {
+        var paginator = document.getElementById('paginatorId');
+        if (paginator != null) { 
+            paginator.classList.add('hide');
+        }
+    }
+</script>

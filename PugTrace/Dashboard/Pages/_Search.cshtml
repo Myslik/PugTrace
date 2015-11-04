@@ -1,0 +1,49 @@
+﻿@* Generator: Template TypeVisibility: Internal GeneratePrettyNames: True TrimLeadingUnderscores : true *@
+@using PugTrace.Dashboard
+@inherits RazorPage<Pager>
+
+<div class="container-fluid">
+    <form method="get">
+        <div class="row">
+            <div class="col-md-2 form-group">
+                <label>Find from:</label>
+                <input id="search-from" type="date" class="form-control" name="from" value="@Model.GetFromTime()" />
+            </div>
+            <div class="col-md-2 form-group">
+                <label>Find to:</label>
+                <input id="search-to" type="date" class="form-control" name="to" value="@Model.GetToTime()" />
+            </div>
+            <div class="col-md-2 form-group">
+                <label>Message contains:</label>
+                <input id="search-value" type="text" class="form-control" name="val" value="@Model.GetSearchValue()" />
+                <input type="hidden" name="type" value="@Model.GetFilterType()" />
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-default" style="margin-top: 25px;">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results" class="row hide">
+    <div class="col-md-12">
+        <h3>Search results:</h3>
+    </div>
+</div>
+
+<script>
+    var searchButtonOn = document.getElementById('search-button-on');
+    var searchButtonOff = document.getElementById('search-button-off');
+    var searchMsg = document.getElementById('search-results');
+    var itemPerPage = document.getElementById('itemsPerPage');
+    
+
+    var searchValue = document.getElementById('search-value').value;
+    if (searchValue != "") {
+        console.log("show search");
+        itemPerPage.classList.add('hide');
+        searchButtonOn.classList.add('hide');
+        searchButtonOff.classList.remove('hide');
+        searchMsg.classList.remove('hide');
+        document.getElementById('search-bar').classList.remove('hide');
+    }
+</script>
