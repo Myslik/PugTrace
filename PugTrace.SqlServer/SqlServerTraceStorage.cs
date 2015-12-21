@@ -33,5 +33,10 @@ namespace PugTrace.SqlServer
 
             return connection;
         }
+
+        public override string ToString()
+        {
+            return "SQL Trace Storage";
+        }
     }
 }

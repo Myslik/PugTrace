@@ -8,18 +8,18 @@ html, body {
     height: auto !important;
     height: 100%;
     /* Negative indent footer by its height */
-    margin: 0 auto -60px;
+    margin: 0 auto -40px;
     /* Pad bottom by footer height */
-    padding: 0 0 60px;
+    padding: 0 0 40px;
 }
 
 #footer {
-    height: 60px;
+    height: 40px;
     background-color: #f5f5f5;
 }
 
-.container .credit {
-    margin: 20px 0;
+.container-fluid .credit {
+    margin: 10px 0;
 }
 
 .navbar-brand {
@@ -51,10 +51,14 @@ html, body {
     margin-bottom: 10px;
 }
 
+.borderless tbody tr td, .borderless tbody tr th, .borderless thead tr th {
+    border: none;
+}
+
 .trace.error {
     cursor: pointer;
     color: #fff;
-    background-color: #c0392b;
+    background-color: #FF7878;
 }
 
 .detail.hide {

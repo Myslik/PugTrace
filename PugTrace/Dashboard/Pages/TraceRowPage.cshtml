@@ -1,0 +1,31 @@
+﻿@* Generator: Template TypeVisibility: Internal GeneratePrettyNames: True *@
+@using PugTrace.Dashboard
+@using PugTrace.Dashboard.Pages
+@using PugTrace.Storage
+@inherits RazorPage<TraceData>
+@{
+    Layout = null;
+    var rowClass = "trace " + Model.EventType.ToLower();
+    var exception = Model.GetException();
+}
+
+<tr class="@rowClass">
+    <td style="width: 100px;">
+        <span class="label label-default">@Html.RenderDateTime(Model.UtcDateTime.ToLocalTime())</span>
+    </td>
+    <td>
+        <a href="@Url.TraceDetails(Model.TraceId.ToString())" class="btn btn-xs btn-default pull-right">Details</a>
+        @Model.Message
+    </td>
+</tr>
+
+@if (exception != null)
+{
+    <tr class="detail" style="display: none;">
+        <td colspan="2" style="padding-left: 20px; padding-bottom: 20px; background-color: #f5f5f5;">
+            <h3>@exception.TypeName</h3>
+            <h4>@exception.Message</h4>
+            @Html.RenderExceptionStackTrace(exception.Detail)
+        </td>
+    </tr>
+}

@@ -8,14 +8,12 @@ namespace PugTrace.Dashboard
         private static readonly string[] Javascripts =
         {
             "jquery-1.11.3.min.js",
-            "bootstrap.min.js",
-            "highlight.pack.js"
+            "bootstrap.min.js"
         };
 
         private static readonly string[] Stylesheets =
         {
             "bootstrap.min.css",
-            "vs.css",
             "pugtrace.css"
         };
 

@@ -5,68 +5,31 @@
 @inherits TracesPage
 @{
     Layout = new LayoutPage();
-    bool first = true;
 }
 <div class="btn-toolbar btn-toolbar-top">
     @Html.Filter(this.Pager)
     @Html.PerPageSelector(this.Pager)
 </div>
-
 <div id="search-bar" class="row hide">
     <div class="col-md-12">
         @Html.Search(this.Pager)
     </div>
 </div>
-
 <div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Application</th>
-                <th>Source</th>
-                <th>Id</th>
-                <th>Event Type</th>
-                <th>Timestamp</th>
-                <th>Machine</th>
-                <th>Message</th>
-                <th style="width: 70px;"></th>
-            </tr>
-        </thead>
+    <table class="table table-condensed borderless">
         <tbody>
-            @foreach (var trace in this.Model)
-            {
-                var rowClass = "trace " + trace.EventType.ToLower();
-
-                <tr class="@rowClass">
-                    <td>@trace.ApplicationName</td>
-                    <td>@trace.Source</td>
-                    <td>@trace.Id</td>
-                    <td>@trace.EventType</td>
-                    <td>@Html.RenderDateTime(trace.UtcDateTime.ToLocalTime())</td>
-                    <td>@trace.MachineName</td>
-                    <td>@Html.Truncate(trace.Message)</td>
-                    <td><a href="@Url.TraceDetails(trace.TraceId.ToString())" class="btn btn-xs btn-default pull-right">Details</a></td>
-                </tr>
-
-                var exception = trace.GetException();
-                if (exception != null)
-                {
-                    var detailStyle = first ? "" : "display: none;";
-                    <tr class="detail" style="@detailStyle">
-                        <td colspan="8" style="padding-left: 20px; background-color: #f5f5f5;">
-                            <h3>@exception.TypeName</h3>
-                            <h4>@exception.Message</h4>
-                            @Html.RenderExceptionStackTrace(exception.Detail)
-                        </td>
-                    </tr>
-                    first = false;
-                }
-            }
             @if (this.Count == 0)
             {
                 <tr>
-                    <td colspan="8">No traces.</td>
+                    <td colspan="2">No traces.</td>
                 </tr>
+            }
+            else
+            {
+                foreach (var trace in this.Model)
+                {
+                    @Html.TraceRow(trace)
+                }
             }
         </tbody>
     </table>

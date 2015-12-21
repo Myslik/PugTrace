@@ -37,138 +37,98 @@ namespace PugTrace.Dashboard.Pages
     public partial class LayoutPage : RazorPage
     {
 #line hidden
+
         public override void Execute()
         {
+
+
 WriteLiteral("\r\n");
 
-WriteLiteral("<!DOCTYPE html>\r\n<html");
 
-WriteLiteral(" lang=\"en\"");
 
-WriteLiteral(">\r\n<head>\r\n    <title>PugTrace</title>\r\n    <meta");
 
-WriteLiteral(" http-equiv=\"X-UA-Compatible\"");
 
-WriteLiteral(" content=\"IE=edge\"");
 
-WriteLiteral(">\r\n    <meta");
-
-WriteLiteral(" charset=\"utf-8\"");
-
-WriteLiteral(" />\r\n    <meta");
-
-WriteLiteral(" name=\"viewport\"");
-
-WriteLiteral(" content=\"width=device-width, initial-scale=1.0\"");
-
-WriteLiteral(">\r\n    <link");
-
-WriteLiteral(" rel=\"stylesheet\"");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 435), Tuple.Create("\"", 457)
             
-            #line 13 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-, Tuple.Create(Tuple.Create("", 442), Tuple.Create<System.Object, System.Int32>(Url.To("/css")
+            #line 6 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+   
+    var version = GetType().Assembly.GetName().Version;
+
+
             
             #line default
             #line hidden
-, 442), false)
-);
+WriteLiteral(@"<!DOCTYPE html>
+<html lang=""en"">
+<head>
+    <title>PugTrace</title>
+    <meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
+    <meta charset=""utf-8"" />
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <link rel=""stylesheet"" href=""");
 
-WriteLiteral(" />\r\n</head>\r\n<body>\r\n    <!-- Wrap all page content here -->\r\n    <div");
 
-WriteLiteral(" id=\"wrap\"");
-
-WriteLiteral(">\r\n\r\n        <!-- Fixed navbar -->\r\n        <div");
-
-WriteLiteral(" class=\"navbar navbar-default navbar-static-top\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"container\"");
-
-WriteLiteral(">\r\n                <div");
-
-WriteLiteral(" class=\"navbar-header\"");
-
-WriteLiteral(">\r\n                    <button");
-
-WriteLiteral(" type=\"button\"");
-
-WriteLiteral(" class=\"navbar-toggle\"");
-
-WriteLiteral(" data-toggle=\"collapse\"");
-
-WriteLiteral(" data-target=\".navbar-collapse\"");
-
-WriteLiteral(">\r\n                        <span");
-
-WriteLiteral(" class=\"icon-bar\"");
-
-WriteLiteral("></span>\r\n                        <span");
-
-WriteLiteral(" class=\"icon-bar\"");
-
-WriteLiteral("></span>\r\n                        <span");
-
-WriteLiteral(" class=\"icon-bar\"");
-
-WriteLiteral("></span>\r\n                    </button>\r\n                    <a");
-
-WriteLiteral(" class=\"navbar-brand\"");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 1082), Tuple.Create("\"", 1100)
             
-            #line 28 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-, Tuple.Create(Tuple.Create("", 1089), Tuple.Create<System.Object, System.Int32>(Url.Home()
+            #line 16 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+                            Write(Url.To("/css"));
+
             
             #line default
             #line hidden
-, 1089), false)
-);
+WriteLiteral(@""" />
+</head>
+<body>
+    <!-- Wrap all page content here -->
+    <div id=""wrap"">
 
-WriteLiteral(">\r\n                        <img");
+        <!-- Fixed navbar -->
+        <div class=""navbar navbar-default navbar-static-top"">
+            <div class=""container-fluid"">
+                <div class=""navbar-header"">
+                    <button type=""button"" class=""navbar-toggle"" data-toggle=""collapse"" data-target="".navbar-collapse"">
+                        <span class=""icon-bar""></span>
+                        <span class=""icon-bar""></span>
+                        <span class=""icon-bar""></span>
+                    </button>
+                    <a class=""navbar-brand"" href=""");
 
-WriteLiteral(" class=\"logo\"");
 
-WriteLiteral(" alt=\"\"");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 1152), Tuple.Create("\"", 1178)
             
-            #line 29 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-, Tuple.Create(Tuple.Create("", 1158), Tuple.Create<System.Object, System.Int32>(Url.To("/img/logo")
-            
-            #line default
-            #line hidden
-, 1158), false)
-);
+            #line 31 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+                                             Write(Url.Home());
 
-WriteLiteral(" />\r\n                        <span>PugTrace</span>\r\n                    </a>\r\n   " +
-"             </div>\r\n                <div");
-
-WriteLiteral(" class=\"collapse navbar-collapse\"");
-
-WriteLiteral(">\r\n                    <ul");
-
-WriteLiteral(" class=\"nav navbar-nav navbar-right\"");
-
-WriteLiteral(">\r\n                        <li>\r\n                            <a");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 1459), Tuple.Create("\"", 1474)
-            
-            #line 36 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-, Tuple.Create(Tuple.Create("", 1466), Tuple.Create<System.Object, System.Int32>(AppPath
             
             #line default
             #line hidden
-, 1466), false)
-);
+WriteLiteral("\">\r\n                        <img class=\"logo\" alt=\"\" src=\"");
 
-WriteLiteral(">\r\n                                <span");
 
-WriteLiteral(" class=\"glyphicon glyphicon-log-out\"");
+            
+            #line 32 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+                                                 Write(Url.To("/img/logo"));
 
-WriteLiteral(@"></span>
+            
+            #line default
+            #line hidden
+WriteLiteral(@""" />
+                        <span>PugTrace</span>
+                    </a>
+                </div>
+                <div class=""collapse navbar-collapse"">
+                    <ul class=""nav navbar-nav navbar-right"">
+                        <li>
+                            <a href=""");
+
+
+            
+            #line 39 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+                                Write(AppPath);
+
+            
+            #line default
+            #line hidden
+WriteLiteral(@""">
+                                <span class=""glyphicon glyphicon-log-out""></span>
                                 Back to site
                             </a>
                         </li>
@@ -179,115 +139,83 @@ WriteLiteral(@"></span>
         </div>
 
         <!-- Begin page content -->
-        <div");
+        <div class=""container-fluid"" style=""margin-bottom: 20px;"">
+            ");
 
-WriteLiteral(" class=\"container\"");
-
-WriteLiteral(" style=\"margin-bottom: 20px;\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("            ");
 
             
-            #line 49 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            #line 52 "..\..\Dashboard\Pages\LayoutPage.cshtml"
        Write(RenderBody());
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n        </div>\r\n    </div>\r\n\r\n    <div");
+WriteLiteral(@"
+        </div>
+    </div>
 
-WriteLiteral(" id=\"footer\"");
+    <div id=""footer"">
+        <div class=""container-fluid"">
+            <ul class=""list-inline credit"">
+                <li>
+                    Powered by <a href=""https://github.com/Myslik/PugTrace"" target=""_blank"">PugTrace</a>,
+                    version ");
 
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"container\"");
-
-WriteLiteral(">\r\n            <ul");
-
-WriteLiteral(" class=\"list-inline credit\"");
-
-WriteLiteral(">\r\n                <li>\r\n                    <span>\r\n                        PugT" +
-"race\r\n");
 
             
-            #line 59 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-                        
-            
-            #line default
-            #line hidden
-            
-            #line 59 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-                          
-                            var version = GetType().Assembly.GetName().Version;
-                        
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-WriteLiteral("                        ");
-
-            
-            #line 62 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-                   Write(String.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build));
+            #line 61 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+                       Write(String.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                    </span>\r\n                </li>\r\n                <li>");
+WriteLiteral(". &copy; ");
+
 
             
-            #line 65 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-               Write(Storage);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</li>\r\n                <li>Time: ");
-
-            
-            #line 66 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-                     Write(DateTime.UtcNow);
+            #line 61 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+                                                                                                          Write(DateTime.Now.Year);
 
             
             #line default
             #line hidden
-WriteLiteral(" GMT</li>\r\n                <li>Generated: ");
+WriteLiteral(" PugTrace.\r\n                    Licensed under <a href=\"https://opensource.org/li" +
+"censes/MIT\" target=\"_blank\">MIT</a>.\r\n                    Server date and time i" +
+"s ");
+
 
             
-            #line 67 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-                           Write(GenerationTime.Elapsed.TotalMilliseconds.ToString("N"));
+            #line 63 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+                                       Write(DateTime.Now.ToString("f"));
 
             
             #line default
             #line hidden
-WriteLiteral("ms</li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n\r\n    <script");
+WriteLiteral(".\r\n                    This log is provided by the ");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2675), Tuple.Create("\"", 2695)
+
             
-            #line 72 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-, Tuple.Create(Tuple.Create("", 2681), Tuple.Create<System.Object, System.Int32>(Url.To("/js")
+            #line 64 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+                                           Write(Storage.ToString());
+
             
             #line default
             #line hidden
-, 2681), false)
-);
+WriteLiteral(".\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n\r\n    <s" +
+"cript src=\"");
 
-WriteLiteral(@"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script>
-        $(function () {
-            $("".trace.error"").on(""click"", function () {
-                var current = $(this).next();
-                $("".detail"").not(current).hide();
-                current.show();
-            });
-        });
-    </script>
-</body>
-</html>");
+
+            
+            #line 70 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            Write(Url.To("/js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    <script>\r\n        $(function () {\r\n            $(\".trace.error\")" +
+".on(\"click\", function () {\r\n                $(this).next().toggle();\r\n          " +
+"  });\r\n        });\r\n    </script>\r\n</body>\r\n</html>");
+
 
         }
     }

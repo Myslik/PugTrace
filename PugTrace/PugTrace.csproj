@@ -99,6 +99,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TraceDetailsPage.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard\Pages\TraceRowPage.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TraceRowPage.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard\Pages\_Filter1.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -168,6 +173,10 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>LayoutPage.generated.cs</LastGenOutput>
     </None>
+    <None Include="Dashboard\Pages\TraceRowPage.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>TraceRowPage.generated.cs</LastGenOutput>
+    </None>
     <None Include="Dashboard\Pages\TraceDetailsPage.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>TraceDetailsPage.generated.cs</LastGenOutput>
@@ -193,8 +202,6 @@
     <EmbeddedResource Include="Dashboard\Content\img\pugtrace.png" />
     <EmbeddedResource Include="Dashboard\Content\css\pugtrace.css" />
     <EmbeddedResource Include="Dashboard\Content\fonts\glyphicons-halflings-regular.svg" />
-    <EmbeddedResource Include="Dashboard\Content\css\vs.css" />
-    <EmbeddedResource Include="Dashboard\Content\js\highlight.pack.js" />
     <Content Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using PugTrace.Dashboard.Pages;
+using PugTrace.Storage;
 using System;
 using System.Net;
 using System.Text;
@@ -76,6 +77,12 @@ namespace PugTrace.Dashboard
             return RenderPartial(new PerPageSelector { Model = pager });
         }
 
+        public NonEscapedString TraceRow(TraceData data)
+        {
+            if (data == null) throw new ArgumentNullException("data");
+            return RenderPartial(new TraceRowPage { Model = data });
+        }
+
         public NonEscapedString RenderPartial(RazorPage partialPage)
         {
             partialPage.Assign(_page);
@@ -89,7 +96,7 @@ namespace PugTrace.Dashboard
 
         public NonEscapedString RenderDateTime(DateTime d)
         {
-            return Raw(string.Format("<abbr title=\"{0}\">{1}</abbr>", d.ToString("f"), d.GetPrettyDate()));
+            return Raw(string.Format("{0}", d.ToString("yyyy-MM-dd hh:mm")));
         }
 
         public NonEscapedString Raw(string value)

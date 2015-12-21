@@ -3,6 +3,9 @@
 @using PugTrace.Dashboard
 @using PugTrace.Dashboard.Pages
 @inherits RazorPage
+@{ 
+    var version = GetType().Assembly.GetName().Version;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +21,7 @@
 
         <!-- Fixed navbar -->
         <div class="navbar navbar-default navbar-static-top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
@@ -45,38 +48,30 @@
         </div>
 
         <!-- Begin page content -->
-        <div class="container" style="margin-bottom: 20px;">
+        <div class="container-fluid" style="margin-bottom: 20px;">
             @RenderBody()
         </div>
     </div>
 
     <div id="footer">
-        <div class="container">
+        <div class="container-fluid">
             <ul class="list-inline credit">
                 <li>
-                    <span>
-                        PugTrace
-                        @{
-                            var version = GetType().Assembly.GetName().Version;
-                        }
-                        @String.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build)
-                    </span>
+                    Powered by <a href="https://github.com/Myslik/PugTrace" target="_blank">PugTrace</a>,
+                    version @String.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build). &copy; @DateTime.Now.Year PugTrace.
+                    Licensed under <a href="https://opensource.org/licenses/MIT" target="_blank">MIT</a>.
+                    Server date and time is @DateTime.Now.ToString("f").
+                    This log is provided by the @Storage.ToString().
                 </li>
-                <li>@Storage</li>
-                <li>Time: @DateTime.UtcNow GMT</li>
-                <li>Generated: @(GenerationTime.Elapsed.TotalMilliseconds.ToString("N"))ms</li>
             </ul>
         </div>
     </div>
 
     <script src="@Url.To("/js")"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
     <script>
         $(function () {
             $(".trace.error").on("click", function () {
-                var current = $(this).next();
-                $(".detail").not(current).hide();
-                current.show();
+                $(this).next().toggle();
             });
         });
     </script>
