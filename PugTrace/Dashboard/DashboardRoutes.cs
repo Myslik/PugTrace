@@ -13,7 +13,7 @@ namespace PugTrace.Dashboard
 
         private static readonly string[] Stylesheets =
         {
-            "bootstrap.min.css",
+            "moravia.min.css",
             "pugtrace.css"
         };
 
@@ -21,15 +21,6 @@ namespace PugTrace.Dashboard
         {
             Routes = new RouteCollection();
             Routes.AddRazorPage("/", x => new HomePage());
-            Routes.AddRazorPage("/traces/(?<TraceId>\\d+)", x =>
-            {
-                using (var connection = TraceStorage.Current.GetConnection())
-                {
-                    var traceId = int.Parse(x.Groups["TraceId"].Value);
-                    var model = connection.GetTraceDetail(traceId);
-                    return new TraceDetailsPage { Model = model };
-                }
-            });
 
             #region Embedded static content
 

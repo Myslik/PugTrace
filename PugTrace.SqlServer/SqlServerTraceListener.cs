@@ -33,7 +33,8 @@ namespace PugTrace.SqlServer
                 "ActivityId",
                 "RelatedActivityId",
                 "LogicalOperationStack",
-                "Data"
+                "Data",
+                "PrincipalIdentityName"
             };
 
         private static string _columns = string.Join(", ", _parameters.Select(p => string.Format("[{0}]", p)));
@@ -129,16 +130,16 @@ namespace PugTrace.SqlServer
             string dataString = null;
             if (data != null)
             {
-                dataString = JsonConvert.SerializeObject(data);
-
-                foreach (var item in data)
+                foreach(var item in data)
                 {
-                    var exceptionData = item as ExceptionData;
-                    if (exceptionData != null && string.IsNullOrEmpty(message))
+                    var traceData = item as TraceData;
+                    if (traceData != null)
                     {
-                        message = string.Format("[{0}] {1}", exceptionData.TypeName.Split('.').LastOrDefault(), exceptionData.Message);
+                        message = traceData.ToString();
                     }
                 }
+
+                dataString = JsonConvert.SerializeObject(data);
             }
             WriteToDatabase(eventCache, source, eventType, id, message, relatedActivityId, dataString);
         }
@@ -178,7 +179,7 @@ namespace PugTrace.SqlServer
             {
                 message = message.Substring(0, maxLength - trimmedMessageIndicator.Length) + trimmedMessageIndicator;
             }
-
+            
             ConnectionStringSettings connectionSettings = ConfigurationManager.ConnectionStrings[ConnectionName];
             using (var connection = new SqlConnection(connectionSettings.ConnectionString))
             {
@@ -199,7 +200,8 @@ namespace PugTrace.SqlServer
                     ActivityId = Trace.CorrelationManager.ActivityId != Guid.Empty ? (Guid?)Trace.CorrelationManager.ActivityId : null,
                     RelatedActivityId = relatedActivityId,
                     LogicalOperationStack = logicalOperationStack,
-                    Data = dataString
+                    Data = dataString,
+                    PrincipalIdentityName = Thread.CurrentPrincipal.Identity.Name
                 });
             }
         }

@@ -2,30 +2,45 @@
 @using PugTrace.Dashboard
 @using PugTrace.Dashboard.Pages
 @using PugTrace.Storage
-@inherits RazorPage<TraceData>
+@inherits RazorPage<Trace>
 @{
     Layout = null;
     var rowClass = "trace " + Model.EventType.ToLower();
-    var exception = Model.GetException();
+    var data = Model.GetData();
 }
 
 <tr class="@rowClass">
-    <td style="width: 100px;">
+    <td style="width: 110px;">
         <span class="label label-default">@Html.RenderDateTime(Model.UtcDateTime.ToLocalTime())</span>
     </td>
+    <td style="width: 140px;">
+        @Model.PrincipalIdentityName
+    </td>
     <td>
-        <a href="@Url.TraceDetails(Model.TraceId.ToString())" class="btn btn-xs btn-default pull-right">Details</a>
-        @Model.Message
+        @if (data != null)
+        {
+            <a href="#" class="btn btn-xs btn-default pull-right expander">Expand</a>
+        }
+        @Html.Raw(Model.GetMessage())
     </td>
 </tr>
 
-@if (exception != null)
+@if (data != null)
 {
-    <tr class="detail" style="display: none;">
-        <td colspan="2" style="padding-left: 20px; padding-bottom: 20px; background-color: #f5f5f5;">
-            <h3>@exception.TypeName</h3>
-            <h4>@exception.Message</h4>
-            @Html.RenderExceptionStackTrace(exception.Detail)
+    <tr class="detail hide">
+        <td colspan="3">
+            @Html.RenderExceptionStackTrace(data.StackTrace)
+
+            @if (data.Parameters.Count > 0)
+            {
+                <dl class="dl-horizontal">
+                    @foreach (var parameter in data.Parameters)
+                    {
+                        <dt>@parameter.Key</dt>
+                        <dd>@parameter.Value</dd>
+                    }
+                </dl>
+            }
         </td>
     </tr>
 }

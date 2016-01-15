@@ -35,7 +35,7 @@ namespace PugTrace.Dashboard.Pages
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    internal partial class TraceRowPage : RazorPage<TraceData>
+    internal partial class TraceRowPage : RazorPage<Trace>
     {
 #line hidden
 
@@ -55,7 +55,7 @@ WriteLiteral("\r\n");
   
     Layout = null;
     var rowClass = "trace " + Model.EventType.ToLower();
-    var exception = Model.GetException();
+    var data = Model.GetData();
 
 
             
@@ -71,7 +71,7 @@ WriteLiteral("\r\n<tr class=\"");
             
             #line default
             #line hidden
-WriteLiteral("\">\r\n    <td style=\"width: 100px;\">\r\n        <span class=\"label label-default\">");
+WriteLiteral("\">\r\n    <td style=\"width: 110px;\">\r\n        <span class=\"label label-default\">");
 
 
             
@@ -81,22 +81,44 @@ WriteLiteral("\">\r\n    <td style=\"width: 100px;\">\r\n        <span class=\"l
             
             #line default
             #line hidden
-WriteLiteral("</span>\r\n    </td>\r\n    <td>\r\n        <a href=\"");
+WriteLiteral("</span>\r\n    </td>\r\n    <td style=\"width: 140px;\">\r\n        ");
 
 
             
             #line 17 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
-            Write(Url.TraceDetails(Model.TraceId.ToString()));
+   Write(Model.PrincipalIdentityName);
 
             
             #line default
             #line hidden
-WriteLiteral("\" class=\"btn btn-xs btn-default pull-right\">Details</a>\r\n        ");
+WriteLiteral("\r\n    </td>\r\n    <td>\r\n");
 
 
             
-            #line 18 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
-   Write(Model.Message);
+            #line 20 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
+         if (data != null)
+        {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("            <a href=\"#\" class=\"btn btn-xs btn-default pull-right expander\">Expand" +
+"</a>\r\n");
+
+
+            
+            #line 23 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
+        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("        ");
+
+
+            
+            #line 24 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
+   Write(Html.Raw(Model.GetMessage()));
 
             
             #line default
@@ -105,50 +127,94 @@ WriteLiteral("\r\n    </td>\r\n</tr>\r\n\r\n");
 
 
             
-            #line 22 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
- if (exception != null)
+            #line 28 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
+ if (data != null)
 {
 
             
             #line default
             #line hidden
-WriteLiteral("    <tr class=\"detail\" style=\"display: none;\">\r\n        <td colspan=\"2\" style=\"pa" +
-"dding-left: 20px; padding-bottom: 20px; background-color: #f5f5f5;\">\r\n          " +
-"  <h3>");
+WriteLiteral("    <tr class=\"detail hide\">\r\n        <td colspan=\"3\">\r\n            ");
 
 
             
-            #line 26 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
-           Write(exception.TypeName);
+            #line 32 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
+       Write(Html.RenderExceptionStackTrace(data.StackTrace));
 
             
             #line default
             #line hidden
-WriteLiteral("</h3>\r\n            <h4>");
+WriteLiteral("\r\n\r\n");
 
 
             
-            #line 27 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
-           Write(exception.Message);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h4>\r\n            ");
-
-
-            
-            #line 28 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
-       Write(Html.RenderExceptionStackTrace(exception.Detail));
+            #line 34 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
+             if (data.Parameters.Count > 0)
+            {
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n        </td>\r\n    </tr>\r\n");
+WriteLiteral("                <dl class=\"dl-horizontal\">\r\n");
 
 
             
-            #line 31 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
+            #line 37 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
+                     foreach (var parameter in data.Parameters)
+                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        <dt>");
+
+
+            
+            #line 39 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
+                       Write(parameter.Key);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</dt>\r\n");
+
+
+
+WriteLiteral("                        <dd>");
+
+
+            
+            #line 40 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
+                       Write(parameter.Value);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</dd>\r\n");
+
+
+            
+            #line 41 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
+                    }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                </dl>\r\n");
+
+
+            
+            #line 43 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
+            }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("        </td>\r\n    </tr>\r\n");
+
+
+            
+            #line 46 "..\..\Dashboard\Pages\TraceRowPage.cshtml"
 }
 
             

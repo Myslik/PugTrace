@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace PugTrace.Dashboard
 {
-    public abstract class TracesPage : RazorPage<IEnumerable<TraceData>>
+    public abstract class TracesPage : RazorPage<IEnumerable<Trace>>
     {
         public TracesPage ()
         {
-            Model = Enumerable.Empty<TraceData>();
+            Model = Enumerable.Empty<Trace>();
         }
 
         public Pager Pager { get; set; }
@@ -37,7 +37,7 @@ namespace PugTrace.Dashboard
             }
             if (rowsPerPage == 0)
             {
-                rowsPerPage = 10;
+                rowsPerPage = 100;
             }
             using (var connection = this.Storage.GetConnection())
             {

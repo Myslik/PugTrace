@@ -78,73 +78,59 @@ WriteLiteral(@"<!DOCTYPE html>
 WriteLiteral(@""" />
 </head>
 <body>
-    <!-- Wrap all page content here -->
-    <div id=""wrap"">
-
-        <!-- Fixed navbar -->
-        <div class=""navbar navbar-default navbar-static-top"">
-            <div class=""container-fluid"">
-                <div class=""navbar-header"">
-                    <button type=""button"" class=""navbar-toggle"" data-toggle=""collapse"" data-target="".navbar-collapse"">
-                        <span class=""icon-bar""></span>
-                        <span class=""icon-bar""></span>
-                        <span class=""icon-bar""></span>
-                    </button>
-                    <a class=""navbar-brand"" href=""");
+    <div class=""navbar navbar-default navbar-static-top"">
+        <div class=""container-fluid"">
+            <div class=""navbar-header"">
+                <button type=""button"" class=""navbar-toggle"" data-toggle=""collapse"" data-target="".navbar-collapse"">
+                    <span class=""icon-bar""></span>
+                    <span class=""icon-bar""></span>
+                    <span class=""icon-bar""></span>
+                </button>
+                <a class=""navbar-brand"" href=""");
 
 
             
-            #line 31 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-                                             Write(Url.Home());
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\">\r\n                        <img class=\"logo\" alt=\"\" src=\"");
-
-
-            
-            #line 32 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-                                                 Write(Url.To("/img/logo"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral(@""" />
-                        <span>PugTrace</span>
-                    </a>
-                </div>
-                <div class=""collapse navbar-collapse"">
-                    <ul class=""nav navbar-nav navbar-right"">
-                        <li>
-                            <a href=""");
-
-
-            
-            #line 39 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-                                Write(AppPath);
+            #line 27 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+                                         Write(Url.Home());
 
             
             #line default
             #line hidden
 WriteLiteral(@""">
-                                <span class=""glyphicon glyphicon-log-out""></span>
-                                Back to site
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
+                    <span class=""logo""></span>
+                    <span class=""title"">PugTrace</span>
+                </a>
+            </div>
+            <div class=""collapse navbar-collapse"">
+                <ul class=""nav navbar-nav navbar-right"">
+                    <li>
+                        <a href=""");
+
+
+            
+            #line 35 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+                            Write(AppPath);
+
+            
+            #line default
+            #line hidden
+WriteLiteral(@""">
+                            <span class=""glyphicon glyphicon-log-out""></span>
+                            Back to site
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
 
-        <!-- Begin page content -->
-        <div class=""container-fluid"" style=""margin-bottom: 20px;"">
+    <div class=""container-fluid"" style=""margin-bottom: 20px;"">
+        <div class=""white-card"" style=""margin-right: 0;"">
             ");
 
 
             
-            #line 52 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            #line 47 "..\..\Dashboard\Pages\LayoutPage.cshtml"
        Write(RenderBody());
 
             
@@ -156,14 +142,14 @@ WriteLiteral(@"
 
     <div id=""footer"">
         <div class=""container-fluid"">
-            <ul class=""list-inline credit"">
-                <li>
+            <div class=""row"">
+                <p class=""text-center"">
                     Powered by <a href=""https://github.com/Myslik/PugTrace"" target=""_blank"">PugTrace</a>,
                     version ");
 
 
             
-            #line 61 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            #line 56 "..\..\Dashboard\Pages\LayoutPage.cshtml"
                        Write(String.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build));
 
             
@@ -173,7 +159,7 @@ WriteLiteral(". &copy; ");
 
 
             
-            #line 61 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            #line 56 "..\..\Dashboard\Pages\LayoutPage.cshtml"
                                                                                                           Write(DateTime.Now.Year);
 
             
@@ -185,7 +171,7 @@ WriteLiteral(" PugTrace.\r\n                    Licensed under <a href=\"https:/
 
 
             
-            #line 63 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            #line 58 "..\..\Dashboard\Pages\LayoutPage.cshtml"
                                        Write(DateTime.Now.ToString("f"));
 
             
@@ -195,26 +181,27 @@ WriteLiteral(".\r\n                    This log is provided by the ");
 
 
             
-            #line 64 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            #line 59 "..\..\Dashboard\Pages\LayoutPage.cshtml"
                                            Write(Storage.ToString());
 
             
             #line default
             #line hidden
-WriteLiteral(".\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n\r\n    <s" +
+WriteLiteral(".\r\n                </p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <s" +
 "cript src=\"");
 
 
             
-            #line 70 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            #line 65 "..\..\Dashboard\Pages\LayoutPage.cshtml"
             Write(Url.To("/js"));
 
             
             #line default
             #line hidden
-WriteLiteral("\"></script>\r\n    <script>\r\n        $(function () {\r\n            $(\".trace.error\")" +
-".on(\"click\", function () {\r\n                $(this).next().toggle();\r\n          " +
-"  });\r\n        });\r\n    </script>\r\n</body>\r\n</html>");
+WriteLiteral("\"></script>\r\n    <script>\r\n        $(function () {\r\n            $(\".expander\").on" +
+"(\"click\", function () {\r\n                $(this).closest(\".trace\").next(\".detail" +
+"\").toggleClass(\"hide\");\r\n            });\r\n        });\r\n    </script>\r\n</body>\r\n<" +
+"/html>");
 
 
         }

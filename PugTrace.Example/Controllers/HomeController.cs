@@ -22,7 +22,7 @@ namespace PugTrace.Example.Controllers
 
         public ActionResult Log()
         {
-            Source.TraceInformation("Hello world!");
+            Source.PugTrace(TraceEventType.Information, "Hello {what}!", new { what = "World" });
             Source.Flush();
             return RedirectToAction("Index");
         }
@@ -36,7 +36,7 @@ namespace PugTrace.Example.Controllers
             }
             catch (Exception exception)
             {
-                Source.TraceWebException(5000, HttpContext, exception);
+                Source.PugTraceException(exception);
                 Source.Flush();
             }
             return RedirectToAction("Index");
@@ -44,7 +44,7 @@ namespace PugTrace.Example.Controllers
 
         public ActionResult LogLong()
         {
-            Source.TraceInformation("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet, risus non lobortis egestas, nibh sapien fringilla dui, sed dictum diam turpis et nisl. Sed elit lacus, tincidunt at tincidunt sed, mollis et eros. Vivamus ac diam lorem. Curabitur placerat interdum augue. Proin sit amet risus eu magna aliquam volutpat non in turpis. Phasellus porta eu lorem vitae condimentum. Suspendisse efficitur bibendum justo non fringilla. Sed et ornare ipsum. Nullam at turpis sed eros pellentesque consectetur. Duis ullamcorper porta dignissim.");
+            Source.PugTrace(TraceEventType.Warning, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet, risus non lobortis egestas, nibh sapien fringilla dui, sed dictum diam turpis et nisl. Sed elit lacus, tincidunt at tincidunt sed, mollis et eros. Vivamus ac diam lorem. Curabitur placerat interdum augue. Proin sit amet risus eu magna aliquam volutpat non in turpis. Phasellus porta eu lorem vitae condimentum. Suspendisse efficitur bibendum justo non fringilla. Sed et ornare ipsum. Nullam at turpis sed eros pellentesque consectetur. Duis ullamcorper porta dignissim.");
             Source.Flush();
             return RedirectToAction("Index");
         }

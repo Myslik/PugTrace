@@ -4,13 +4,9 @@
 
 <div id="itemsPerPage">
     <div class="btn-group pull-right paginator">
-        @foreach (var count in new[] { 10, 20, 50, 100, 500 })
+        @foreach (var count in new[] { 100, 500 })
         {
             @Html.Link(count.ToString(), Model.RecordsPerPageUrl(count), "btn btn-sm btn-default", count == Model.RecordsPerPage)
         }
-    </div>
-    <div class="btn-toolbar-spacer pull-right"></div>
-    <div class="btn-toolbar-label btn-toolbar-label-sm pull-right">
-        Items per page:
     </div>
 </div>

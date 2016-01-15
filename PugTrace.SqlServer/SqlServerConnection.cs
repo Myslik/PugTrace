@@ -19,12 +19,12 @@ namespace PugTrace.SqlServer
 
         public SqlConnection Connection { get { return _connection; } }
 
-        public IEnumerable<TraceData> Get(int skip = 0, int top = 20, string typeFilter = null)
+        public IEnumerable<Trace> Get(int skip = 0, int top = 20, string typeFilter = null)
         {
             return _connection.GetTraces(skip, top, typeFilter);
         }
 
-        public TraceData GetTraceDetail(int id)
+        public Trace GetTraceDetail(int id)
         {
             return _connection.GetTraceDetails(id);
         }
@@ -39,7 +39,7 @@ namespace PugTrace.SqlServer
             return _connection.GetTraceCount(typeFilter);
         }
 
-        public IEnumerable<TraceData> Search(DateTime from, DateTime to, string searchValue = null, string filterType = null)
+        public IEnumerable<Trace> Search(DateTime from, DateTime to, string searchValue = null, string filterType = null)
         {
             return _connection.SearchTraces(from, to, searchValue, filterType);
         }

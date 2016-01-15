@@ -26,14 +26,14 @@ namespace PugTrace.SqlServer.Queries
             }
         }
 
-        internal static IEnumerable<TraceData> GetTraces(this SqlConnection connection, int skip, int top, string type = null)
+        internal static IEnumerable<Trace> GetTraces(this SqlConnection connection, int skip, int top, string type = null)
         {
-            return connection.Query<TraceData>(_sqlGetTraces, new { top = top, skip = skip, type = type });
+            return connection.Query<Trace>(_sqlGetTraces, new { top = top, skip = skip, type = type });
         }
 
-        internal static TraceData GetTraceDetails(this SqlConnection connection, int id)
+        internal static Trace GetTraceDetails(this SqlConnection connection, int id)
         {
-            return connection.Query<TraceData>(_sqlGetTraceDetails, new { id = id }).SingleOrDefault();
+            return connection.Query<Trace>(_sqlGetTraceDetails, new { id = id }).SingleOrDefault();
         }
 
         internal static int GetTraceCount(this SqlConnection connection, string type)
@@ -41,9 +41,9 @@ namespace PugTrace.SqlServer.Queries
             return connection.ExecuteScalar<int>(_sqlGetTraceCount, new { type = type });
         }
 
-        internal static IEnumerable<TraceData> SearchTraces(this SqlConnection connection, DateTime from, DateTime to, string value = null, string filterType = null)
+        internal static IEnumerable<Trace> SearchTraces(this SqlConnection connection, DateTime from, DateTime to, string value = null, string filterType = null)
         {
-            return connection.Query<TraceData>(_sqlGetSearch, new { From = from, To = to, Value = value, FilterType = filterType });
+            return connection.Query<Trace>(_sqlGetSearch, new { From = from, To = to, Value = value, FilterType = filterType });
         }
     }
 }

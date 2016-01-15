@@ -18,43 +18,6 @@ namespace PugTrace.Dashboard
             _page = page;
         }
 
-        public NonEscapedString RenderData(string data)
-        {
-            var builder = new StringBuilder();
-            JArray json = null;
-
-            if (!string.IsNullOrEmpty(data))
-            {
-                json = JArray.Parse(data);
-            }
-
-            if (json != null)
-            {
-                foreach (var property in json)
-                {
-                    if (property.Type == JTokenType.Object)
-                    {
-                        var obj = property.Value<JObject>();
-                        var dataObject = new DataObject(obj);
-
-                        builder.AppendLine(DataObject(dataObject).ToString());
-                    }
-                }
-            }
-
-            return Raw(builder.ToString());
-        }
-
-        public NonEscapedString DataObject(DataObject data)
-        {
-            return RenderPartial(new DataObjectPage { Model = data });
-        }
-
-        public NonEscapedString DataRow(DataRow row)
-        {
-            return RenderPartial(new DataRowPage { Model = row });
-        }
-
         public NonEscapedString Filter(Pager pager)
         {
             return RenderPartial(new Filter { Model = pager });
@@ -77,7 +40,7 @@ namespace PugTrace.Dashboard
             return RenderPartial(new PerPageSelector { Model = pager });
         }
 
-        public NonEscapedString TraceRow(TraceData data)
+        public NonEscapedString TraceRow(Trace data)
         {
             if (data == null) throw new ArgumentNullException("data");
             return RenderPartial(new TraceRowPage { Model = data });
@@ -117,7 +80,7 @@ namespace PugTrace.Dashboard
 
         public NonEscapedString RenderExceptionStackTrace(string value)
         {
-            return Raw(string.Format("<pre style=\"border: none; padding: 0; margin: 0;\"><code class=\"csharp\">{0}</code></pre>", value));
+            return Raw(string.Format("<pre><code class=\"csharp\">{0}</code></pre>", value));
         }
 
         public NonEscapedString RenderValue(string value)

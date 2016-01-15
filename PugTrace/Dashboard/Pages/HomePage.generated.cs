@@ -59,90 +59,109 @@ WriteLiteral("\r\n");
             
             #line default
             #line hidden
-WriteLiteral("<div class=\"btn-toolbar btn-toolbar-top\">\r\n    ");
+WriteLiteral("\r\n<div class=\"panel panel-default\">\r\n    <div class=\"panel-heading\">\r\n        <di" +
+"v class=\"row\">\r\n            <div class=\"col-lg-6\">\r\n                ");
 
 
             
-            #line 10 "..\..\Dashboard\Pages\HomePage.cshtml"
-Write(Html.Filter(this.Pager));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n    ");
-
-
-            
-            #line 11 "..\..\Dashboard\Pages\HomePage.cshtml"
-Write(Html.PerPageSelector(this.Pager));
+            #line 14 "..\..\Dashboard\Pages\HomePage.cshtml"
+           Write(Html.Filter(this.Pager));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n</div>\r\n<div id=\"search-bar\" class=\"row hide\">\r\n    <div class=\"col-md-12\">\r\n  " +
-"      ");
+WriteLiteral("\r\n            </div>\r\n            <div class=\"col-lg-6\">\r\n                <div cl" +
+"ass=\"pull-right \">\r\n                    ");
 
 
             
-            #line 15 "..\..\Dashboard\Pages\HomePage.cshtml"
-   Write(Html.Search(this.Pager));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n    </div>\r\n</div>\r\n<div class=\"table-responsive\">\r\n    <table class=\"table tab" +
-"le-condensed borderless\">\r\n        <tbody>\r\n");
-
-
-            
-            #line 21 "..\..\Dashboard\Pages\HomePage.cshtml"
-             if (this.Count == 0)
-            {
+            #line 18 "..\..\Dashboard\Pages\HomePage.cshtml"
+               Write(Html.PerPageSelector(this.Pager));
 
             
             #line default
             #line hidden
-WriteLiteral("                <tr>\r\n                    <td colspan=\"2\">No traces.</td>\r\n      " +
-"          </tr>\r\n");
+WriteLiteral("\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div id=\"se" +
+"arch-bar\" class=\"row hide\">\r\n            <div class=\"col-md-12\">\r\n              " +
+"  ");
 
 
             
-            #line 26 "..\..\Dashboard\Pages\HomePage.cshtml"
-            }
-            else
-            {
-                foreach (var trace in this.Model)
+            #line 24 "..\..\Dashboard\Pages\HomePage.cshtml"
+           Write(Html.Search(this.Pager));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(@"
+            </div>
+        </div>
+    </div>
+    <div class=""table-responsive"">
+        <table class=""table table-condensed"">
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>User</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+");
+
+
+            
+            #line 38 "..\..\Dashboard\Pages\HomePage.cshtml"
+                 if (this.Count == 0)
                 {
-                    
-            
-            #line default
-            #line hidden
-            
-            #line 31 "..\..\Dashboard\Pages\HomePage.cshtml"
-               Write(Html.TraceRow(trace));
 
             
             #line default
             #line hidden
+WriteLiteral("                    <tr>\r\n                        <td colspan=\"3\">No traces.</td>" +
+"\r\n                    </tr>\r\n");
+
+
             
-            #line 31 "..\..\Dashboard\Pages\HomePage.cshtml"
-                                         
+            #line 43 "..\..\Dashboard\Pages\HomePage.cshtml"
                 }
-            }
+                else
+                {
+                    foreach (var trace in this.Model)
+                    {
+                        
+            
+            #line default
+            #line hidden
+            
+            #line 48 "..\..\Dashboard\Pages\HomePage.cshtml"
+                   Write(Html.TraceRow(trace));
 
             
             #line default
             #line hidden
-WriteLiteral("        </tbody>\r\n    </table>\r\n</div>\r\n");
-
-
             
-            #line 37 "..\..\Dashboard\Pages\HomePage.cshtml"
-Write(Html.Paginator(this.Pager));
+            #line 48 "..\..\Dashboard\Pages\HomePage.cshtml"
+                                             
+                    }
+                }
 
             
             #line default
             #line hidden
+WriteLiteral("            </tbody>\r\n        </table>\r\n    </div>\r\n    <div class=\"panel-footer\"" +
+">\r\n        ");
+
+
+            
+            #line 55 "..\..\Dashboard\Pages\HomePage.cshtml"
+   Write(Html.Paginator(this.Pager));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n    </div>\r\n</div>\r\n");
+
 
         }
     }

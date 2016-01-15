@@ -64,8 +64,6 @@
     <Compile Include="DashboardOptions.cs" />
     <Compile Include="Dashboard\CombinedResourceDispatcher.cs" />
     <Compile Include="Dashboard\DashboardRoutes.cs" />
-    <Compile Include="Dashboard\DataObject.cs" />
-    <Compile Include="Dashboard\DataRow.cs" />
     <Compile Include="Dashboard\DateTimeExtensions.cs" />
     <Compile Include="Dashboard\EmbeddedResourceDispatcher.cs" />
     <Compile Include="Dashboard\HtmlHelper.cs" />
@@ -74,16 +72,6 @@
     <Compile Include="Dashboard\MiddlewareExtensions.cs" />
     <Compile Include="Dashboard\NonEscapedString.cs" />
     <Compile Include="Dashboard\Pager.cs" />
-    <Compile Include="Dashboard\Pages\DataObjectPage.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataObjectPage.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Dashboard\Pages\DataRowPage.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataRowPage.cshtml</DependentUpon>
-    </Compile>
     <Compile Include="Dashboard\Pages\HomePage.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -93,11 +81,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LayoutPage.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Dashboard\Pages\TraceDetailsPage.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TraceDetailsPage.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\Pages\TraceRowPage.generated.cs">
       <AutoGen>True</AutoGen>
@@ -131,40 +114,25 @@
     <Compile Include="Dashboard\RouteCollectionExtensions.cs" />
     <Compile Include="Dashboard\TracesPage.cs" />
     <Compile Include="Dashboard\UrlHelper.cs" />
-    <Compile Include="Data\DataCollector.cs" />
-    <Compile Include="Data\DataCollectorExtensions.cs" />
-    <Compile Include="Data\ITraceData.cs" />
-    <Compile Include="Data\RequestData.cs" />
+    <Compile Include="Data\TraceData.cs" />
     <Compile Include="Data\TraceSourceExtensions.cs" />
     <Compile Include="GlobalConfiguration.cs" />
     <Compile Include="GlobalConfigurationExtensions.cs" />
-    <Compile Include="Data\ExceptionData.cs" />
     <Compile Include="IAuthorizationFilter.cs" />
     <Compile Include="IGlobalConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Storage\TraceDataExtensions.cs" />
+    <Compile Include="Storage\TraceExtensions.cs" />
     <Compile Include="TraceListenerBase.cs" />
     <Compile Include="Storage\IStorageConnection.cs" />
-    <Compile Include="Storage\TraceData.cs" />
+    <Compile Include="Storage\Trace.cs" />
     <Compile Include="TraceStorage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Dashboard\Content\css\bootstrap-theme.min.css" />
-    <EmbeddedResource Include="Dashboard\Content\css\bootstrap.min.css" />
     <EmbeddedResource Include="Dashboard\Content\fonts\glyphicons-halflings-regular.eot" />
     <EmbeddedResource Include="Dashboard\Content\fonts\glyphicons-halflings-regular.ttf" />
     <EmbeddedResource Include="Dashboard\Content\fonts\glyphicons-halflings-regular.woff" />
     <EmbeddedResource Include="Dashboard\Content\fonts\glyphicons-halflings-regular.woff2" />
-    <EmbeddedResource Include="Dashboard\Content\js\bootstrap.min.js" />
     <EmbeddedResource Include="Dashboard\Content\js\jquery-1.11.3.min.js" />
-    <None Include="Dashboard\Pages\DataObjectPage.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>DataObjectPage.generated.cs</LastGenOutput>
-    </None>
-    <None Include="Dashboard\Pages\DataRowPage.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>DataRowPage.generated.cs</LastGenOutput>
-    </None>
     <None Include="Dashboard\Pages\HomePage.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>HomePage.generated.cs</LastGenOutput>
@@ -177,10 +145,8 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>TraceRowPage.generated.cs</LastGenOutput>
     </None>
-    <None Include="Dashboard\Pages\TraceDetailsPage.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>TraceDetailsPage.generated.cs</LastGenOutput>
-    </None>
+    <EmbeddedResource Include="Dashboard\Content\js\bootstrap.min.js" />
+    <EmbeddedResource Include="Dashboard\Content\css\moravia.min.css" />
     <Content Include="Dashboard\Pages\_Search.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_Search.generated.cs</LastGenOutput>

@@ -2,10 +2,6 @@
 @using PugTrace.Dashboard
 @inherits RazorPage<Pager>
 
-<div class="btn-toolbar-label btn-toolbar-label-sm pull-left" style="margin-left: 5px;">
-    Filter by type:
-</div>
-<div class="btn-toolbar-spacer pull-left"></div>
 <div class="btn-group pull-left">
     @Html.Link("All", Model.TypeFilterUrl(null), "btn btn-sm btn-default", Model.TypeFilter == null)
     @Html.Link("Information", Model.TypeFilterUrl("Information"), "btn btn-sm btn-default", Model.TypeFilter == "Information")
@@ -13,7 +9,7 @@
     @Html.Link("Error", Model.TypeFilterUrl("Error"), "btn btn-sm btn-default", Model.TypeFilter == "Error")
 </div>
 
-<div class="btn-group pull-left">
+<div class="btn-group pull-left" style="margin-left: 10px;">
     <button id="search-button-on" class="btn btn-sm btn-default">Search</button>
     <a id="search-button-off" class="btn btn-sm btn-success hide" href="@Url.Home()">
         Search

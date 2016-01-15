@@ -1,5 +1,5 @@
 DECLARE @TARGET_SCHEMA_VERSION INT;
-SET @TARGET_SCHEMA_VERSION = 1;
+SET @TARGET_SCHEMA_VERSION = 2;
 
 PRINT 'Installing PugTrace SQL objects...';
 
@@ -67,6 +67,15 @@ BEGIN
 		)
 
 		SET @CURRENT_SCHEMA_VERSION = 1;
+	END
+
+	IF @CURRENT_SCHEMA_VERSION = 1
+	BEGIN
+		PRINT 'Installing schema version 2';
+
+		ALTER TABLE [PugTrace].[Trace] ADD PrincipalIdentityName nvarchar(32) NULL;
+
+		SET @CURRENT_SCHEMA_VERSION = 2;
 	END
 
 	UPDATE [PugTrace].[Schema] SET [Version] = @CURRENT_SCHEMA_VERSION

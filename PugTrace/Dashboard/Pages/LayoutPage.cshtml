@@ -16,62 +16,57 @@
     <link rel="stylesheet" href="@Url.To("/css")" />
 </head>
 <body>
-    <!-- Wrap all page content here -->
-    <div id="wrap">
-
-        <!-- Fixed navbar -->
-        <div class="navbar navbar-default navbar-static-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="@Url.Home()">
-                        <img class="logo" alt="" src="@Url.To("/img/logo")" />
-                        <span>PugTrace</span>
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="@AppPath">
-                                <span class="glyphicon glyphicon-log-out"></span>
-                                Back to site
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Home()">
+                    <span class="logo"></span>
+                    <span class="title">PugTrace</span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="@AppPath">
+                            <span class="glyphicon glyphicon-log-out"></span>
+                            Back to site
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
 
-        <!-- Begin page content -->
-        <div class="container-fluid" style="margin-bottom: 20px;">
+    <div class="container-fluid" style="margin-bottom: 20px;">
+        <div class="white-card" style="margin-right: 0;">
             @RenderBody()
         </div>
     </div>
 
     <div id="footer">
         <div class="container-fluid">
-            <ul class="list-inline credit">
-                <li>
+            <div class="row">
+                <p class="text-center">
                     Powered by <a href="https://github.com/Myslik/PugTrace" target="_blank">PugTrace</a>,
                     version @String.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build). &copy; @DateTime.Now.Year PugTrace.
                     Licensed under <a href="https://opensource.org/licenses/MIT" target="_blank">MIT</a>.
                     Server date and time is @DateTime.Now.ToString("f").
                     This log is provided by the @Storage.ToString().
-                </li>
-            </ul>
+                </p>
+            </div>
         </div>
     </div>
 
     <script src="@Url.To("/js")"></script>
     <script>
         $(function () {
-            $(".trace.error").on("click", function () {
-                $(this).next().toggle();
+            $(".expander").on("click", function () {
+                $(this).closest(".trace").next(".detail").toggleClass("hide");
             });
         });
     </script>
