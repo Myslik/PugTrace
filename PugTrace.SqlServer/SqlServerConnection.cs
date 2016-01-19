@@ -43,5 +43,10 @@ namespace PugTrace.SqlServer
         {
             return _connection.SearchTraces(from, to, searchValue, filterType);
         }
+
+        public void Cleanup()
+        {
+            _connection.Cleanup();
+        }
     }
 }

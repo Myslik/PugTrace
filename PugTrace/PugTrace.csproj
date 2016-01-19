@@ -82,6 +82,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LayoutPage.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard\Pages\Cleanup.generated.cs">
+      <DependentUpon>Cleanup.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Dashboard\Pages\TraceRowPage.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -141,6 +146,10 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>LayoutPage.generated.cs</LastGenOutput>
     </None>
+    <Content Include="Dashboard\Pages\Cleanup.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Cleanup.generated.cs</LastGenOutput>
+    </Content>
     <None Include="Dashboard\Pages\TraceRowPage.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>TraceRowPage.generated.cs</LastGenOutput>

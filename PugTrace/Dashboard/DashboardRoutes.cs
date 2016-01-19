@@ -21,6 +21,7 @@ namespace PugTrace.Dashboard
         {
             Routes = new RouteCollection();
             Routes.AddRazorPage("/", x => new HomePage());
+            Routes.AddRazorPage("/cleanup", x => new Cleanup());
 
             #region Embedded static content
 

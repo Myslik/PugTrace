@@ -45,5 +45,10 @@ namespace PugTrace.SqlServer.Queries
         {
             return connection.Query<Trace>(_sqlGetSearch, new { From = from, To = to, Value = value, FilterType = filterType });
         }
+
+        internal static void Cleanup(this SqlConnection connection)
+        {
+            connection.Execute("DELETE FROM [PugTrace].[Trace]");
+        }
     }
 }

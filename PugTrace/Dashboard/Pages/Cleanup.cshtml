@@ -1,0 +1,14 @@
+﻿@* Generator: Template TypeVisibility: Internal GeneratePrettyNames: True *@
+@using PugTrace.Dashboard
+@using PugTrace.Dashboard.Pages
+@using PugTrace.Storage
+@inherits RazorPage
+@{ 
+    Layout = new LayoutPage();
+    using (var connection = this.Storage.GetConnection())
+    {
+        connection.Cleanup();
+    }
+}
+<h3>Cleanup</h3>
+<p>Done.</p>
